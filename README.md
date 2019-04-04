@@ -1,27 +1,14 @@
-# GreenTechFrontEndApp
+# install Angular
+  -install nodejs [Lien Nodejs ] (https://nodejs.org/en/download/)
+  -To install Angular CLI run this command in your  cammand line (cmd)  : npm install -g @angular/cli
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+##cloning the project using git
+ - [Download Git ](https://git-scm.com/download/win).
+ - git clone https://github.com/Bouguedra-Adem/GreenTechFrontEnd.git
 
-## Development server
+## open project with Visual Code 
+ - [Download Vscode](https://code.visualstudio.com/download)
+ - open VsCode (Afficher->terminal intégré)
+ - run this command  (ng serve)
+ - open your favorite browser and type localhost:4200
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
