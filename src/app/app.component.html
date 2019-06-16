@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-10 ">
-          <img src={{path}} class="rounded-circle  border-success"/>
+          <img src="../assets/GREENTECH.png" class="rounded-circle  "/>
         </div>
-        <div class="col-lg-1 ">
+        <div class="col-lg-2 ">
             <nav class="navbar navbar-expand-lg navbar-light bg-light bg-lightLink ">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 mt-lg-00">
                 <li class="nav-item active">
                   <a class="nav-link" routerLink="#"><img src={{path1}} class="  border-success"/></a>
                 </li>
@@ -15,8 +15,11 @@
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="#"><img src={{path3}} class=" border-success"/></a>
-                </li>   
+                    <a class="nav-link" routerLink="/CreationCompte"><span> Connecté(e) </span>  </a>
+                 </li>  
+                 <li class="nav-item"> 
+                    <a class="nav-link" routerLink="/CreationCompte"> <img src="../assets/login.png"   class=" border-success"/></a>
+                  </li> 
               </ul>
               </nav>
         </div>
@@ -26,21 +29,21 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 mt-lg-navbar">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/">ACEUIL |</a>
+        <a class="nav-link nav-link1" routerLink="/">ACCEUIL </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/ged">GED |</a>
+        <a class="nav-link nav-link1" routerLink="/ged">GED </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/apa">APA |</a>
+        <a class="nav-link nav-link1" routerLink="/apa">APA </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/RG">ANNUIARE RG |</a>
+        <a class="nav-link nav-link1" routerLink="/RG">ANNUIARE </a>
       </li>
       <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="/Ressource" id="navbarDropdownMenuLink" role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link nav-link1 dropdown-toggle" routerLink="/Ressource" id="navbarDropdownMenuLink" role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              RESSOURCE
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -56,3 +59,4 @@
 
 
 <router-outlet></router-outlet>
+<app-footer></app-footer>
