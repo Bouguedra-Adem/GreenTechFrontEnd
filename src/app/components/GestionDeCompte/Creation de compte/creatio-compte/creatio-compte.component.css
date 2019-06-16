@@ -1,0 +1,14 @@
+img {width:100%;}
+.bg-primary {
+    /* background-color: #007bff!important; */
+    background-color: rgba(131, 136, 129, 0.75) !important;
+}
+.btn-outline-success {
+    color: #a4d470;
+    border-color: #a4d470;
+}
+.btn-outline-success:hover {
+    color: #ffffff;
+    background-color:#a4d470; 
+    border-color: #a4d470;
+}
