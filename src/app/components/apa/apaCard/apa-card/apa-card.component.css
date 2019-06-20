@@ -16,6 +16,9 @@
 }
 .btn {
     margin-top: auto;
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
  
   }
   .w-100 {

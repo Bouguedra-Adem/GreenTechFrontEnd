@@ -30,8 +30,9 @@ background-color: #69a923c4;
 .bg-lightLink {
     background-color: #f8f9fa00!important;
 }
-.dropdown > .dropdown-menu  :hover{
-display: block;
+.dropdown-toggle
+.dropdown > .nav-link1  :hover{
+  display: block;
 }
 span{
     color: #69a923c4;

@@ -20,7 +20,8 @@ import { ApaCardComponent } from './components/apa/apaCard/apa-card/apa-card.com
 import { FooterComponent } from './components/footer/footer.component';
 import { CreatioCompteComponent } from './components/GestionDeCompte/Creation de compte/creatio-compte/creatio-compte.component';
 import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/se-connecte/se-connecte.component';
-
+import { FormsModule } from '@angular/forms';
+import { AuthentificationService } from './Services/authentification.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,10 +41,11 @@ import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/s
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [AnnuaireService,ApaService,GedService, DemandePermisService ,RessourceService
-  ],
+  ,AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

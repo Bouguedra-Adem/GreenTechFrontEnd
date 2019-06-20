@@ -4,10 +4,56 @@
     background:  #00000005;;
     height: auto;
 
+
 }
 /*ged nnavbar*/
+.form-inline{
+    margin-left: 30%;
+}
+.form-inline .form-control {
+    width: 44%;
+    height: 55px;
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+}
+.form-group{
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+}
+.mt-auto, .my-auto {
+    margin-top: auto!important;
+    width: 100%;
+    border-color:  #a4d470; 
+    background-color:#a4d470; 
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+    color: white;
+}
+.btnSerch{
+    color: white;
+    border-color:  #a4d470; 
+    background-color:#a4d470; 
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+    width: 11%;
+    height: 45;
+}
+a:not([href]):not([tabindex]) {
+    color: white; 
+    text-decoration: none;
+}
 .bg-light {
-    background-color: #00000029!important;
+    
+    background-color: #848885eb!important;
+    border-radius: 78px 78px 78px 78px;
+-moz-border-radius: 78px 78px 78px 78px;
+-webkit-border-radius: 78px 78px 78px 78px;
+border: 0px solid #000000;
+width: 65%;
 
 }
 .containerNav{
