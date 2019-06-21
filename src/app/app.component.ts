@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthentificationService } from './Services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ export class AppComponent {
   public path2="assets/facebook.png";
   public path3="assets/google-plus.png";
   public path4="assets/Background.jpg";
-  public user:String="editeur";
+  public role:String;
+  constructor( private auth:AuthentificationService){
+       this.role=this.auth.Auth
+  }
  
   
 }

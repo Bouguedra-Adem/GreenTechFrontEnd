@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthentificationService {
- public Auth="editeur"
+ public Auth="utilisateur"
   constructor() { }
 }

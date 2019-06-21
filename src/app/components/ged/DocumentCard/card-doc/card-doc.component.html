@@ -1,5 +1,6 @@
 
         <div *ngIf="doc">
+           
             <div class="container py-3">
               
                 <!-- Card Start -->
@@ -13,9 +14,22 @@
                              Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. 
                              {{doc.bref_Description}}
                         </p>
-                        
                         <br>
-                        <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                          <div *ngIf="role=='visiteur'">
+                            <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                          </div>
+                          <div *ngIf="role=='utilisateur'">
+                              <div class="container">
+                                  <div class="row">
+                                    <div class="col-lg-8">
+                                       <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <button type="button" class=" mt-auto   btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter à Votre Ged favories"><img src="../../../../../assets/trash.png" alt=""></button>
+                                    </div>
+                                  </div>
+                             </div>
+                          </div>
                       </div>
                     </div>
                     <div class="col-lg-5">
@@ -25,28 +39,37 @@
                   </div> 
                 </div>
               </div>
-           
+            
+            
   
            <div class="container">
            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog  " >
               <div class="modal-content ">
                 <div class="modal-header">
-                  <h5 class="modal-title " id="exampleModalCenterTitle">Titre Document</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    <img src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-lg-10">
+                            <h5 class="modal-title " id="exampleModalCenterTitle">Titre Document</h5>
+                            
+                        </div>
+                        <div class="col-lg-1">
+                            <button ><img  src="../../../../../assets//cloud-storage-download.png" alt=""></button>
+                        </div>
+                        <div class="col-lg-1">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                      </div>
+                  </div>
                   
                 </div>
-                <div class="modal-footer">
-                   
-                    <button ><img  src="../../../../../assets//cloud-storage-download.png" alt=""></button>
+                <div class="modal-body">
+                    <img class="IMGclass" src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">
+                  
                 </div>
-               
-              </div>
+                
             </div>
           </div>
         </div>
