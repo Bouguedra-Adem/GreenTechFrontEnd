@@ -65,6 +65,11 @@ element.style {
     overflow-y: auto;
     background: #9e9191d6;
 }
+.IMGclass{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 .modal-header {
   
 border-bottom: 0px solid #dee2e6; 
@@ -79,10 +84,22 @@ border-bottom: 0px solid #dee2e6;
     background-color:#a4d470; 
     border-color: #a4d470;
 }
+.Pselection{
+font-family: "Arial Black", Gadget, sans-serif;
+font-size: 14px;
+letter-spacing: 0px;
+word-spacing: 2.2px;
+color: #848484;
+font-weight: 400;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: uppercase;
+}
 .modal-title{
     font-weight: bold;
     font-size: 220%;
-    padding-left: 35%;
+    padding-left: 40%;
     color: #a4d470;
     text-transform: uppercase;
     
