@@ -20,14 +20,14 @@ export class GedComponent implements OnInit {
   private Type:String="all";
   private Categorie:String="all";
   private Nbresult:String="all";
-  private Auth:String;
+  private role :String="visiteur"
   
 
   constructor(private gedServie :GedService,private AuthService:AuthentificationService ) { 
    console.log(this.Nbresult);
    console.log(this.Categorie);
    console.log(this.Type);
-   this.Auth=this.AuthService.Auth;
+   this.role=this.AuthService.Auth;
   }
 
   ngOnInit() {

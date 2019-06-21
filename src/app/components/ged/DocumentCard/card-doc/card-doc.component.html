@@ -1,5 +1,6 @@
 
         <div *ngIf="doc">
+           
             <div class="container py-3">
               
                 <!-- Card Start -->
@@ -13,9 +14,22 @@
                              Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. 
                              {{doc.bref_Description}}
                         </p>
-                        
                         <br>
-                        <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                          <div *ngIf="role=='visiteur'">
+                            <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                          </div>
+                          <div *ngIf="role=='utilisateur'">
+                              <div class="container">
+                                  <div class="row">
+                                    <div class="col-lg-8">
+                                       <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                    </div>
+                                    <div class="col-lg-4">
+                                       <a href="#" class="mt-auto    "data-toggle="tooltip" data-placement="bottom" title="Ajouter à Votre Ged favories"><img src="../../../../../assets/trash.png" alt=""></a>
+                                    </div>
+                                  </div>
+                             </div>
+                          </div>
                       </div>
                     </div>
                     <div class="col-lg-5">
@@ -25,7 +39,8 @@
                   </div> 
                 </div>
               </div>
-           
+            
+            
   
            <div class="container">
            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
