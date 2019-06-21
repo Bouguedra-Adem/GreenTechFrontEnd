@@ -2,15 +2,15 @@
     
     <br>
     <form class="form-inline ">
-        <input class="form-control mr-sm-2" name="inputRech" [(ngModel)]="inputRech" type="Recherche par Tag" placeholder="Recherche par Tag" aria-label="Search">
-        <a class="btn btn-success my-2 my-sm-0 btnSerch" (click)="SearchDocTag()"><p class="Pselection">Recherche</p> </a>
+        <input class="form-control form-control1 mr-sm-2" name="inputRech" [(ngModel)]="inputRech" type="Recherche par Tag" placeholder="Recherche par Tag" aria-label="Search">
+        <a class="btn btn-success my-2 my-sm-0 btnSerch" (click)="SearchDocTag()"><p class="Psearch">Recherche</p> </a>
       </form>
       <br>
     <div class="container-fluid bg-light ">
       <div class="row align-items-center justify-content-center">
                           <div class="col-md-3 pt-3">
                                <div class="form-group ">
-                                  <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-control">
+                                  <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-controlSelection form-control">
                                     <option value="all"><p class="Pselection">Type</p></option>
                                     <option value="Loi"><p class="Pselection">Loi</p></option>
                                     <option value="type2"><p class="Pselection">type2</p></option>
@@ -21,8 +21,8 @@
                                </div>
                             </div>
                         <div class="col-md-3 pt-3">
-                               <div class="form-group">
-                                  <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-control">
+                               <div class="form-group ">
+                                  <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
                                     <option value="all"><p>Catégorie</p></option>
                                     <option value="categorie1"><p class="Pselection">categorie1</p></option>
                                     <option value="categorie2"><p class="Pselection">categorie2</p></option>
@@ -33,8 +33,8 @@
                             </div>
                             
                             <div class="col-md-3 pt-3">
-                                <div class="form-group">
-                                  <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-control">
+                                <div class="form-group ">
+                                  <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
                                     <option value="all"> <p class="Pselection">Afficher</p> </option>
                                     <option value="2"><p class="Pselection">2 Documents</p></option>
                                     <option value="4"><p class="Pselection">4 Documents</p></option>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>  
                             <div class="col-md-2">
-                              <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success ">Filtre</button>
+                              <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success "> <p class="Pfiltre">Filtre</p></button>
                             </div>
                   
                       </div>
