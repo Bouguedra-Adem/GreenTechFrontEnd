@@ -172,7 +172,13 @@ export class GedComponent implements OnInit {
         this.dc=this.saveFilter
       }
     }
-    
+    affichePanier(){
+    console.log("adem")
+
+  }
+  afficheMesDocumentFavories(){
+    console.log("adem")
+  }  
 
 }
     
