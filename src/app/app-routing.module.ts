@@ -7,6 +7,7 @@ import { RessourceComponent } from 'src/app/components/ressource/ressource.compo
 import { AnnuaireComponent } from 'src/app/components/annuaire/annuaire.component';
 import { CreatioCompteComponent } from './components/GestionDeCompte/Creation de compte/creatio-compte/creatio-compte.component';
 import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/se-connecte/se-connecte.component';
+import { DemandePermisComponent } from './components/demande-permis/demande-permis.component';
 
 const routes: Routes = [
   { path:'',component:AceuilComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path:'RG',component:AnnuaireComponent },
   { path:'Ressource',component:RessourceComponent},
   { path:'CreationCompte',component:CreatioCompteComponent},
-  { path:'Seconnecte',component:SeConnecteComponent}
+  { path:'Seconnecte',component:SeConnecteComponent},
+  { path:'Permis',component:DemandePermisComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

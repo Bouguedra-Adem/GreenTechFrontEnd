@@ -55,10 +55,10 @@
         <div *ngIf="role=='utilisateur'"> 
             <div class="row align-items-center justify-content-center">
                             <div class="col-lg-1">
-                                <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = "affichePanier" title="Mon panier de documents"><img src="../../../../assets/trash.png" alt=""></button>
+                              <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = 'affichePanier()' title="Mon panier de documents"><img src="../../../../assets/trash.png" alt=""></button>
                             </div> 
                              <div class="col-lg-1">
-                                <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click)="afficheMesDocumentFavories" title="Mes demandes de permis validés"><img src="../../../assets/edit-document.png" alt=""></button>
+                                <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click)='afficheMesDocumentFavories()' title="Mes demandes de permis validés"><img src="../../../assets/edit-document.png" alt=""></button>
                              </div> 
                                 <div class="col-lg-2 pt-3">
                                     <div class="form-group ">
