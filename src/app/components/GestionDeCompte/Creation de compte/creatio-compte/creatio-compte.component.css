@@ -6,9 +6,15 @@ img {width:100%;}
 .btn-outline-success {
     color: #a4d470;
     border-color: #a4d470;
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
 }
 .btn-outline-success:hover {
     color: #ffffff;
     background-color:#a4d470; 
     border-color: #a4d470;
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
 }
