@@ -12,7 +12,7 @@ export class AppComponent {
   public path2="assets/facebook.png";
   public path3="assets/google-plus.png";
   public path4="assets/Background.jpg";
-  
-
+  public user:String="editeur";
+ 
   
 }
