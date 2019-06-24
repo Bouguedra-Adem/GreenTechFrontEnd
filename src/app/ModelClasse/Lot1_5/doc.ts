@@ -1,3 +1,5 @@
+import { User } from '../user/user';
+
 export class Doc {
     id:any;
     nameDocument:String;
@@ -8,5 +10,6 @@ export class Doc {
     categorie:String;
     tag:String;
     lienAssetes:String;
+    Userr:User[]
     
 }
