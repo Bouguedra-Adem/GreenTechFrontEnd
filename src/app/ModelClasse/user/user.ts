@@ -7,11 +7,13 @@ export class User {
     nss:String;
     email:String;
     organisme:String;
-    numtelf:String;
+    numTelf:String;
     pass:String;
     role:String;
     demandeRess:any[];
     doc:Doc[];
+     
+    
 
 }
 

@@ -27,7 +27,10 @@ export class GedComponent implements OnInit {
    console.log(this.Nbresult);
    console.log(this.Categorie);
    console.log(this.Type);
-   this.role=this.AuthService.Auth;
+   if (this.AuthService.getCurrentUser()!=null){
+     this.role=this.AuthService.getCurrentUser().role
+   }
+  
   }
 
   ngOnInit() {
@@ -35,7 +38,10 @@ export class GedComponent implements OnInit {
   this.inputRech=""
     this.gedServie.getAll().subscribe((data:Ged)=>{
       this.ged=data
+      console.log(this.ged)
+      
       this.dc=this.ged.document
+      console.log(this.dc)
       this.saveFilter=this.ged.document
     })
     

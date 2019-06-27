@@ -18,27 +18,31 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <input id="Nom" name="Nom" placeholder="Nom" class="form-control" type="text">
+                          <input name="nom" [(ngModel)]='nom' [ngModelOptions]="{standalone: true}"placeholder="Nom" class="form-control" type="text">
                         </div>
                         <div class="form-group col-md-6">
-                            <input id="Prénom" name="Prénom" placeholder="Prénom" class="form-control" type="text">
+                            <input name="prenom" [(ngModel)]='prenom' [ngModelOptions]="{standalone: true}"placeholder="Prénom" class="form-control" type="text">
                           </div>
                       </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input id="Organisme" name="Organisme" placeholder="Organisme" class="form-control" type="text">
+                    
+                            <input name="organisme" [(ngModel)]='organisme' [ngModelOptions]="{standalone: true}"placeholder="Organisme" class="form-control" type="text">
                         </div>
                         <div class="form-group col-md-6">
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            <input type="email" [(ngModel)]='email'[ngModelOptions]="{standalone: true}"class="form-control" id="inputEmail4" placeholder="Email">
                          </div>
                          <div class="form-group col-md-6">
-                            <input id="Teléphone" name="Teléphone" placeholder="Numéro de Teléphone " class="form-control" required="required" type="text">
+                            <input name="numTlef" [(ngModel)]='numTlef'[ngModelOptions]="{standalone: true}" placeholder="Numéro de Teléphone " class="form-control" required="required" type="text">
                         </div>
                         <div class="form-group col-md-6">
-                            <input id="MotDePasse" name="MotDePasse" placeholder="Mot de passe " class="form-control" required="required" type="text">
+                            <input  name="nss" [(ngModel)]='nss'[ngModelOptions]="{standalone: true}" placeholder="Numéro de Sécurité social " class="form-control" required="required" type="text">
                         </div>
                         <div class="form-group col-md-6">
-                            <input id="CnfirmationMotDePasse" name="CnfirmationMotDePasse" placeholder="Confirme Mot de passe " class="form-control" required="required" type="text">
+                            <input name="pass" [(ngModel)]='pass'[ngModelOptions]="{standalone: true}" placeholder="Mot de passe " class="form-control" required="required" type="text">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input  name="confpass" [(ngModel)]='confpass' [ngModelOptions]="{standalone: true}"placeholder="Confirme Mot de passe " class="form-control" required="required" type="text">
                         </div>
                         
                        
@@ -58,7 +62,7 @@
                     </div>
                     
                     <div class="form-row">
-                        <button type="button" class=" btn btn-outline-success">Créer</button>
+                        <button type="button" (click)='SignUp()'class=" btn btn-outline-success">Créer</button>
                     </div>
                 </form>
             </div>

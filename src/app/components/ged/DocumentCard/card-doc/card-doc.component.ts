@@ -11,17 +11,20 @@ import { AuthentificationService } from 'src/app/Services/authentification.servi
 export class CardDocComponent implements OnInit {
    @Input () doc:Doc
    docum:Doc;
-   role:String="visiteur";
+   role:String
+  
  
 
   constructor( private auth:AuthentificationService) { 
-    
-   this.role=auth.Auth
+    if (this.auth.getCurrentUser()!=null){
+      this.role=this.auth.getCurrentUser().role
+    }  
+  
   }
 
   ngOnInit() {
    
-    
+    console.log(this.doc)
    
    
   }
