@@ -35,6 +35,10 @@ export class AuthentificationService {
          }
       })
     }
+    getDocumentUser(iduser:any):Observable<Doc[]>{
+      let param: any = {'iduser': iduser};
+     return this.http.get<Doc[]>('//localhost:8080/User/GetDocumentUser',{params: param})
+    }
     Logout(){
         localStorage.removeItem('currentUser');
       

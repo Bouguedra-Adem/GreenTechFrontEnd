@@ -15,7 +15,7 @@ export class GedComponent implements OnInit {
   private  ged: Ged;
   private dc:Doc[];
   private dcFilter:Doc[];
-  private saveFilter:Doc[];
+  private SaveDocument:Doc[];
   private inputRech :String="adddd";
   private Type:String="all";
   private Categorie:String="all";
@@ -42,7 +42,7 @@ export class GedComponent implements OnInit {
       
       this.dc=this.ged.document
      
-      this.saveFilter=this.ged.document
+      this.SaveDocument=this.ged.document
     })
     
     }
@@ -62,7 +62,7 @@ export class GedComponent implements OnInit {
       //this.inputRech=""  
     }
     else{
-      this.dc=this.saveFilter
+      this.dc=this.SaveDocument
     }
    }
    
@@ -147,7 +147,7 @@ export class GedComponent implements OnInit {
    Filter(){
      var i=0;
      var j=0;
-     this.dc=this.saveFilter;
+     this.dc=this.SaveDocument;
      this.dcFilter=[]
      if (this.Categorie !="all" ||this.Type!="all"){
         for (i;i<this.dc.length;i++){
@@ -175,11 +175,17 @@ export class GedComponent implements OnInit {
         this.dc=this.dcFilter
       }
       else{
-        this.dc=this.saveFilter
+        this.dc=this.SaveDocument
       }
     }
     affichePanier(){
-     this.dc=this.AuthService.getCurrentUser().doc
+     let idUser=this.AuthService.getCurrentUser().id
+     this.AuthService.getDocumentUser(idUser).subscribe(data =>{
+       this.dc=data
+     })
+   }
+   afficheGed(){
+        this.dc=this.SaveDocument
    }
   afficheMesDocumentFavories(){
     console.log("adem")

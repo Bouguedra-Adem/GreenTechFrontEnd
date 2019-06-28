@@ -14,9 +14,18 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/CreationCompte"><span> Connecté(e) </span>  </a>
-                 </li>  
+                <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+                   <li class="nav-item">
+                        <a class="nav-link" routerLink="/" (click)="logout()" ><span> Déonnecté(e) </span>  </a>
+                   </li>  
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/CreationCompte"><span> Connecté(e) </span>  </a>
+                     </li>  
+                </ng-template>
+                
+
                  <li class="nav-item"> 
                     <a class="nav-link" routerLink="/CreationCompte"> <img src="../assets/login.png"   class=" border-success"/></a>
                   </li> 

@@ -10,6 +10,9 @@
       <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
           <div class="row align-items-center justify-content-center">
               <div class="col-lg-1">
+                  <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = "afficheGed()" title="Afficher les documents de Ged"><img src="../../../assets/ged.png" alt=""></button>
+               </div> 
+              <div class="col-lg-1">
                 <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = "affichePanier()" title="Mon panier de documents"><img src="../../../../assets/trash.png" alt=""></button>
               </div> 
                <div class="col-lg-1">
@@ -27,7 +30,7 @@
                           </select>
                       </div>
                     </div>
-                <div class="col-lg-3 pt-3">
+                <div class="col-lg-2.5 pt-3">
                       <div class="form-group ">
                           <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
                             <option value="all"><p>Catégorie</p></option>
@@ -39,7 +42,7 @@
                       </div>
                     </div>
                     
-                    <div class="col-lg-3 pt-3">
+                    <div class="col-lg-2 pt-3">
                         <div class="form-group ">
                           <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
                             <option value="all"> <p class="Pselection">Afficher</p> </option>
