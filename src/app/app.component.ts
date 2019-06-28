@@ -15,14 +15,14 @@ export class AppComponent {
   public path4="assets/Background.jpg";
   public role:String;
   constructor( private auth:AuthentificationService){
-    if ( auth.getCurrentUser()!=null){
-      this.role=auth.getCurrentUser().role
-    }
+   
       
   }
   ngOnInit(): void {
      
-    
+    if ( this.auth.getCurrentUser()!=null){
+      this.role=this.auth.getCurrentUser().role
+    }
     
   }
   

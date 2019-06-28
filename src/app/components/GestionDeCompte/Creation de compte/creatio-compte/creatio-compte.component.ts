@@ -64,9 +64,11 @@ export class CreatioCompteComponent implements OnInit {
       this.user.pass=this.pass
       this.user.doc=[]
       this.user.demandeRess=[]
-     if ( this.auth.Regester(this.user)){
-      this.router.navigate(['/Seconnecte'])
-     };
+    
+     
+       this.auth.Regester(this.user)
+       this.router.navigate(['/Seconnecte'])
+     }
       
     
     }
@@ -76,4 +78,4 @@ export class CreatioCompteComponent implements OnInit {
 
   }
 
-}
+

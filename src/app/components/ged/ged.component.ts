@@ -38,10 +38,10 @@ export class GedComponent implements OnInit {
   this.inputRech=""
     this.gedServie.getAll().subscribe((data:Ged)=>{
       this.ged=data
-      console.log(this.ged)
+     
       
       this.dc=this.ged.document
-      console.log(this.dc)
+     
       this.saveFilter=this.ged.document
     })
     
@@ -179,9 +179,8 @@ export class GedComponent implements OnInit {
       }
     }
     affichePanier(){
-    console.log("adem")
-
-  }
+     this.dc=this.AuthService.getCurrentUser().doc
+   }
   afficheMesDocumentFavories(){
     console.log("adem")
   }  

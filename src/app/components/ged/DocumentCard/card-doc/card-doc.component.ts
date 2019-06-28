@@ -24,9 +24,14 @@ export class CardDocComponent implements OnInit {
 
   ngOnInit() {
    
-    console.log(this.doc)
    
    
+   
+  }
+  AddFavorier(docid:any){
+    console.log("ademmmm")
+    this.auth.saveDocument(docid,this.auth.getCurrentUser().id)
+
   }
 
 }
