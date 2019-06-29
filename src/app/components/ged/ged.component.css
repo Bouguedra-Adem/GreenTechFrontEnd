@@ -123,3 +123,9 @@ width: 65%;
     font-variant: normal;
     text-transform: uppercase;
 }
+.spinner-border{
+
+  margin-left: 50%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}

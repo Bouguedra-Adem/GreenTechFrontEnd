@@ -4,6 +4,8 @@ import { Ged } from 'src/app/ModelClasse/Lot1_5/ged';
 import { Doc } from 'src/app/ModelClasse/Lot1_5/doc';
 import { ConcatSource } from 'webpack-sources';
 import { AuthentificationService } from 'src/app/Services/authentification.service';
+import { delay } from 'q';
+import {Tesseract} from "tesseract.ts";
 
 
 @Component({
@@ -20,26 +22,34 @@ export class GedComponent implements OnInit {
   private Type:String="all";
   private Categorie:String="all";
   private Nbresult:String="all";
-  private role :String="visiteur"
-  
+  private role :String=""
+   img:String="../../assets/joradp.jpg"
 
   constructor(private gedServie :GedService,private AuthService:AuthentificationService ) { 
    console.log(this.Nbresult);
    console.log(this.Categorie);
    console.log(this.Type);
    if (this.AuthService.getCurrentUser()!=null){
+     console.log("je suis la")
      this.role=this.AuthService.getCurrentUser().role
    }
   
   }
 
   ngOnInit() {
+    Tesseract
+    .(this.img.toString)
+    .progress(console.log)
+    .then((res: any) => {
+        console.log(res);
+    })
+    .catch(console.error);
 
   this.inputRech=""
-    this.gedServie.getAll().subscribe((data:Ged)=>{
+    this.gedServie.getAll().subscribe(async (data:Ged)=>{
+      await delay(3000)
       this.ged=data
-     
-      
+
       this.dc=this.ged.document
      
       this.SaveDocument=this.ged.document
@@ -48,22 +58,24 @@ export class GedComponent implements OnInit {
     }
     
    SearchDocTag(){
+    
      this.dc=[]
       var i=0;
     if (this.inputRech!=""){
       this.ged.document.forEach(element => {
-      
+               
         if (element.tag.split(",").includes(this.inputRech.toString().toLocaleUpperCase() )||element.tag.split(",").includes(this.inputRech.toString().toLocaleLowerCase())){
-          console.log(  element)
-          this.dc[i]=element
+          console.log(  element.tag)
+          this.dc.push(element)
           }
       });
     
-      //this.inputRech=""  
+       
     }
     else{
       this.dc=this.SaveDocument
     }
+    console.log(this.dc)
    }
    
    /*****************************/
@@ -180,7 +192,8 @@ export class GedComponent implements OnInit {
     }
     affichePanier(){
      let idUser=this.AuthService.getCurrentUser().id
-     this.AuthService.getDocumentUser(idUser).subscribe(data =>{
+     this.AuthService.getDocumentUser(idUser).subscribe((data : Doc[]) =>{
+     
        this.dc=data
      })
    }
@@ -188,7 +201,7 @@ export class GedComponent implements OnInit {
         this.dc=this.SaveDocument
    }
   afficheMesDocumentFavories(){
-    console.log("adem")
+   
   }  
 
 }
