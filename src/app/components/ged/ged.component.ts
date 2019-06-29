@@ -5,7 +5,8 @@ import { Doc } from 'src/app/ModelClasse/Lot1_5/doc';
 import { ConcatSource } from 'webpack-sources';
 import { AuthentificationService } from 'src/app/Services/authentification.service';
 import { delay } from 'q';
-import {Tesseract} from "tesseract.ts";
+
+
 
 
 @Component({
@@ -37,13 +38,7 @@ export class GedComponent implements OnInit {
   }
 
   ngOnInit() {
-    Tesseract
-    .(this.img.toString)
-    .progress(console.log)
-    .then((res: any) => {
-        console.log(res);
-    })
-    .catch(console.error);
+    
 
   this.inputRech=""
     this.gedServie.getAll().subscribe(async (data:Ged)=>{
@@ -203,6 +198,25 @@ export class GedComponent implements OnInit {
   afficheMesDocumentFavories(){
    
   }  
+  getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    console.log("image");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL;
+  }
+ /* download(){
+    let doc = new jsPDF();
+    
+     let imageData= this.getBase64Image(document.getElementById('img'));
+     console.log(imageData);
+       doc.addImage(imageData, "JPG", 10, (1)*10, 180, 150);
+       doc.addPage();
+       doc.save('Test.pdf');
+  }*/
 
 }
     
