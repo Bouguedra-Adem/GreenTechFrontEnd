@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Ged } from 'src/app/ModelClasse/Lot1_5/ged';
 import { Doc } from 'src/app/ModelClasse/Lot1_5/doc';
 import { AuthentificationService } from 'src/app/Services/authentification.service';
-
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 @Component({
   selector: 'app-card-doc',
   templateUrl: './card-doc.component.html',
@@ -11,19 +11,28 @@ import { AuthentificationService } from 'src/app/Services/authentification.servi
 export class CardDocComponent implements OnInit {
    @Input () doc:Doc
    docum:Doc;
-   role:String="visiteur";
+   role:String
+  
  
 
   constructor( private auth:AuthentificationService) { 
-    
-   this.role=auth.Auth
+    if (this.auth.getCurrentUser()!=null){
+      this.role=this.auth.getCurrentUser().role
+     
+    }  
+  
   }
 
   ngOnInit() {
    
-    
    
    
+   
+  }
+  AddFavorier(docid:any){
+    console.log("ademmmm")
+    this.auth.saveDocument(docid,this.auth.getCurrentUser().id)
+
   }
 
 }

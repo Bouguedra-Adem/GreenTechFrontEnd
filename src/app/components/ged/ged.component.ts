@@ -4,6 +4,9 @@ import { Ged } from 'src/app/ModelClasse/Lot1_5/ged';
 import { Doc } from 'src/app/ModelClasse/Lot1_5/doc';
 import { ConcatSource } from 'webpack-sources';
 import { AuthentificationService } from 'src/app/Services/authentification.service';
+import { delay } from 'q';
+
+
 
 
 @Component({
@@ -15,49 +18,59 @@ export class GedComponent implements OnInit {
   private  ged: Ged;
   private dc:Doc[];
   private dcFilter:Doc[];
-  private saveFilter:Doc[];
+  private SaveDocument:Doc[];
   private inputRech :String="adddd";
   private Type:String="all";
   private Categorie:String="all";
   private Nbresult:String="all";
-  private role :String="visiteur"
-  
+  private role :String=""
+   img:String="../../assets/joradp.jpg"
 
   constructor(private gedServie :GedService,private AuthService:AuthentificationService ) { 
    console.log(this.Nbresult);
    console.log(this.Categorie);
    console.log(this.Type);
-   this.role=this.AuthService.Auth;
+   if (this.AuthService.getCurrentUser()!=null){
+     console.log("je suis la")
+     this.role=this.AuthService.getCurrentUser().role
+   }
+  
   }
 
   ngOnInit() {
+    
 
   this.inputRech=""
-    this.gedServie.getAll().subscribe((data:Ged)=>{
+    this.gedServie.getAll().subscribe(async (data:Ged)=>{
+      await delay(3000)
       this.ged=data
+
       this.dc=this.ged.document
-      this.saveFilter=this.ged.document
+     
+      this.SaveDocument=this.ged.document
     })
     
     }
     
    SearchDocTag(){
+    
      this.dc=[]
       var i=0;
     if (this.inputRech!=""){
       this.ged.document.forEach(element => {
-      
+               
         if (element.tag.split(",").includes(this.inputRech.toString().toLocaleUpperCase() )||element.tag.split(",").includes(this.inputRech.toString().toLocaleLowerCase())){
-          console.log(  element)
-          this.dc[i]=element
+          console.log(  element.tag)
+          this.dc.push(element)
           }
       });
     
-      //this.inputRech=""  
+       
     }
     else{
-      this.dc=this.saveFilter
+      this.dc=this.SaveDocument
     }
+    console.log(this.dc)
    }
    
    /*****************************/
@@ -141,7 +154,7 @@ export class GedComponent implements OnInit {
    Filter(){
      var i=0;
      var j=0;
-     this.dc=this.saveFilter;
+     this.dc=this.SaveDocument;
      this.dcFilter=[]
      if (this.Categorie !="all" ||this.Type!="all"){
         for (i;i<this.dc.length;i++){
@@ -169,16 +182,41 @@ export class GedComponent implements OnInit {
         this.dc=this.dcFilter
       }
       else{
-        this.dc=this.saveFilter
+        this.dc=this.SaveDocument
       }
     }
     affichePanier(){
-    console.log("adem")
-
-  }
+     let idUser=this.AuthService.getCurrentUser().id
+     this.AuthService.getDocumentUser(idUser).subscribe((data : Doc[]) =>{
+     
+       this.dc=data
+     })
+   }
+   afficheGed(){
+        this.dc=this.SaveDocument
+   }
   afficheMesDocumentFavories(){
-    console.log("adem")
+   
   }  
+  getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    console.log("image");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL;
+  }
+ /* download(){
+    let doc = new jsPDF();
+    
+     let imageData= this.getBase64Image(document.getElementById('img'));
+     console.log(imageData);
+       doc.addImage(imageData, "JPG", 10, (1)*10, 180, 150);
+       doc.addPage();
+       doc.save('Test.pdf');
+  }*/
 
 }
     

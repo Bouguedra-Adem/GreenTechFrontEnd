@@ -1,3 +1,36 @@
-<p>
-  se-connecte works!
-</p>
+
+
+<section class="testimonial py-5" id="testimonial">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                <div class=" ">
+                    <div class="card-body">
+                        <img src="../../../../../assets/GREENTECH.png" style="width:30%">
+                        <h2 class="py-3">Creation de Compte</h2>
+                        <p>bla bla bla bla bla bla bla </p>
+                    </div>
+                </div>
+                <a routerLink="/Seconnecte" class="btn-link btn-outline-success">vous avez déja un conmpte ?</a>
+            </div>
+            <div class="col-md-8 py-5 border">
+                <h4 class="pb-4">Entrez vos informations</h4>
+                <form>
+                  
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input name="nom" [(ngModel)]='nom' [ngModelOptions]="{standalone: true}"placeholder="Nom" class="form-control" type="text">
+                         </div>
+                        <div class="form-group col-md-6">
+                            <input name="pass" [(ngModel)]='pass'[ngModelOptions]="{standalone: true}" placeholder="Mot de passe " class="form-control" required="required" type="text">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <button type="button" (click)='SignIn()'class=" btn btn-outline-success">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
