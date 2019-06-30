@@ -21,6 +21,7 @@ import { CreatioCompteComponent } from './components/GestionDeCompte/Creation de
 import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/se-connecte/se-connecte.component';
 import { FormsModule } from '@angular/forms';
 import { AuthentificationService } from './Services/authentification.service';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +35,16 @@ import { AuthentificationService } from './Services/authentification.service';
     ApaCardComponent,
     FooterComponent,
     CreatioCompteComponent,
-    SeConnecteComponent
+    SeConnecteComponent,
+  
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [AnnuaireService,ApaService,GedService, DemandePermisService ,RessourceService
   ,AuthentificationService],
