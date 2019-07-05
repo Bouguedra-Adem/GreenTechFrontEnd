@@ -22,6 +22,7 @@ import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/s
 import { FormsModule } from '@angular/forms';
 import { AuthentificationService } from './Services/authentification.service';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     FooterComponent,
     CreatioCompteComponent,
     SeConnecteComponent,
+    AnnuairePagesComponent,
   
   
   ],
