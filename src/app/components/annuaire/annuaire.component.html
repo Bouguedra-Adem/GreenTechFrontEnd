@@ -1,3 +1,50 @@
-<p>
-  annuaire works!
-</p>
+<div class="container_fluid">
+
+<br>
+<form class="form-inline ">
+    <input class="form-control form-control1 mr-sm-2" name="inputRech" [(ngModel)]="inputRech" type="Recherche par Tag" placeholder="Rechercher" aria-label="Search">
+    <a class="btn btn-success my-2 my-sm-0 btnSerch" (click)="SearchDocTag()"><p class="Psearch">Recherche</p> </a>
+  </form>
+  <br>
+<ul class="list-group">
+  <li class="list-group-item list-group-item-success"><a class="nav-link nav-link1" routerLink="/institut"><strong> Ressources génétiques forestières et relatives aux plantes aromatiques et médicinales</strong> </a></li>
+  <ul class="list-group">
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Centre de recherche scientifique et technique sur les régions arides <strong>(CRSTRA)</strong>
+    </a></li>
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Institut nationale de la recherche forestière (INRF)
+    </a> </li>
+
+  </ul>
+  <li class="list-group-item list-group-item-success"><a class="nav-link nav-link1" routerLink="/ged"><strong> Ressources génétiques pour l’alimentation et l’agriculture</strong> </a></li>
+  <ul class="list-group">
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Institut technique des arbres fruitiers et de la vigne (ITAFV)
+    </a></li>
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Institut technique pour le développement de l’agronomie saharienne(ITDAS)
+    </a></li>
+   
+
+
+  </ul>
+  <li class="list-group-item list-group-item-success"> <a class="nav-link nav-link1" routerLink="/Institut"><strong> Ressources génétiques marines</strong></a></li>
+  <ul class="list-group">
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Ecole nationale supérieure des sciences de gestion marine et côtière (ENSSMAL)</a></li>
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Centre nationale de recherche pour le développement de la pêche et de l’aquaculture (CNRDPA)
+    </a> </li>
+
+ 
+  </ul>
+  <li class="list-group-item list-group-item-success"><a class="nav-link nav-link1" routerLink="/ged"><strong> 	Ressources génétiques de la faune sauvage et domestique </strong></a></li>
+  <ul class="list-group">
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Institut Technique de l’Elevage (ITELV) </a></li>
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Centre nationale d’information sur l’insémination artificielle et l’amélioration génétique (CNIAAG)
+     </a></li>
+
+   
+  </ul>
+  <li class="list-group-item list-group-item-success"><a class="nav-link nav-link1" routerLink="/ged"><strong>Ressources génétiques des microorganismes </strong> </a></li>
+  <ul class="list-group">
+    <li class="list-group-item"><a class="nav-link nav-link1" routerLink="/institut">Centre de recherche en biotechnique (CRBT)</a></li>
+ 
+  </ul>
+</ul>
+</div>

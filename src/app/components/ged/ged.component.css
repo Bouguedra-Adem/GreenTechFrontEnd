@@ -1,7 +1,7 @@
 .container_fluid{
    
     margin-bottom:5%;
-    background:  #00000005;;
+    background:  #00000005;
     height: auto;
 
 
@@ -16,6 +16,7 @@
     border-radius: 78px 78px 78px 78px;
     -moz-border-radius: 78px 78px 78px 78px;
     -webkit-border-radius: 78px 78px 78px 78px;
+    
 }
 .form-group{
     border-radius: 78px 78px 78px 78px;
@@ -46,6 +47,34 @@ a:not([href]):not([tabindex]) {
     color: white; 
     text-decoration: none;
 }
+.Psearch ,.Pfiltre{
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0px;
+    word-spacing: 2.2px;
+      color: #ffffff;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+  
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+
+.Pselection{
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0px;
+    word-spacing: 2.2px;
+    color: #848484;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+    }
+ 
 .bg-light {
     
     background-color: #848885eb!important;
@@ -81,4 +110,22 @@ width: 65%;
 }*/
 .col{
     margin-top: 15px;
+}
+.form-controlSelection{
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0px;
+    word-spacing: 2.2px;
+    color: #4950577d;;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+.spinner-border{
+
+  margin-left: 50%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }

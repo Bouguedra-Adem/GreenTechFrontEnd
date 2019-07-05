@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AceuilComponent } from './components/aceuil/aceuil.component'
@@ -22,6 +21,8 @@ import { CreatioCompteComponent } from './components/GestionDeCompte/Creation de
 import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/se-connecte/se-connecte.component';
 import { FormsModule } from '@angular/forms';
 import { AuthentificationService } from './Services/authentification.service';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,14 +36,17 @@ import { AuthentificationService } from './Services/authentification.service';
     ApaCardComponent,
     FooterComponent,
     CreatioCompteComponent,
-    SeConnecteComponent
+    SeConnecteComponent,
+    AnnuairePagesComponent,
+  
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [AnnuaireService,ApaService,GedService, DemandePermisService ,RessourceService
   ,AuthentificationService],

@@ -1,4 +1,5 @@
 
+
 <div class="logo-bolck">
     <div class="container-fluid">
       <div class="row">
@@ -14,9 +15,18 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/CreationCompte"><span> Connecté(e) </span>  </a>
-                 </li>  
+                <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+                   <li class="nav-item">
+                        <a class="nav-link" routerLink="/" (click)="logout()" ><span> Déonnecté(e) </span>  </a>
+                   </li>  
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/CreationCompte"><span> Connecté(e) </span>  </a>
+                     </li>  
+                </ng-template>
+                
+
                  <li class="nav-item"> 
                     <a class="nav-link" routerLink="/CreationCompte"> <img src="../assets/login.png"   class=" border-success"/></a>
                   </li> 
@@ -29,7 +39,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+     
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0 mt-lg-navbar">
+        
       <li class="nav-item active">
         <a class="nav-link nav-link1" routerLink="/">ACCEUIL </a>
       </li>
@@ -52,7 +64,11 @@
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
       </li>
-      
+      <div *ngIf="role=='utilisateur'">
+          <li class="nav-item">
+              <a class="nav-link nav-link1" routerLink="/Permis">DEMANDE</a>
+           </li>
+      </div>
     </ul>
   </div>
 </nav>

@@ -2,68 +2,131 @@
     
     <br>
     <form class="form-inline ">
-        <input class="form-control mr-sm-2" name="inputRech" [(ngModel)]="inputRech" type="Recherche par Tag" placeholder="Recherche par Tag" aria-label="Search">
-        <a class="btn btn-success my-2 my-sm-0 btnSerch" (click)="SearchDocTag()">Recherche </a>
+        <input class="form-control form-control1 mr-sm-2" name="inputRech" [(ngModel)]="inputRech" type="Recherche par Tag" placeholder="Recherche par Tag" aria-label="Search">
+        <a class="btn btn-success my-2 my-sm-0 btnSerch" (click)="SearchDocTag()"><p class="Psearch">Recherche</p> </a>
       </form>
       <br>
     <div class="container-fluid bg-light ">
-      <div class="row align-items-center justify-content-center">
-                          <div class="col-md-3 pt-3">
-                               <div class="form-group ">
-                                  <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-control">
-                                    <option value="all">Type</option>
-                                    <option value="Loi">Loi</option>
-                                    <option value="type2">type2</option>
-                                    <option value="type3">type3</option>
-                                    <option value="type4">type4</option>
-                                    <option>Tesla</option>
-                                  </select>
-                               </div>
-                            </div>
-                        <div class="col-md-3 pt-3">
-                               <div class="form-group">
-                                  <select id="inputState" [(ngModel)]="Categorie" (ngModelChange)="Select('categorie')" class="form-control">
-                                    <option value="all">Catégorie</option>
-                                    <option value="categorie1">categorie1</option>
-                                    <option value="categorie2">categorie2</option>
-                                    <option value="categorie3">categorie3</option>
-                                    <option value="categorie4">categorie4</option>
-                                  </select>
-                               </div>
-                            </div>
-                            
-                            <div class="col-md-3 pt-3">
-                                <div class="form-group">
-                                  <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-control">
-                                    <option value="all">Afficher </option>
-                                    <option value="2">2 Documents</option>
-                                    <option value="4">4 Documents</option>
-                                    <option value="8">8 Documents</option>
-                                    <option value="10">10 Documents</option>
-                                  </select>
-                                </div>
-                            </div>  
-                            <div class="col-md-2">
-                              <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success ">Filtre</button>
-                            </div>
-                  
+      <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+          <div class="row align-items-center justify-content-center">
+              <div class="col-lg-1">
+                  <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = "afficheGed()" title="Afficher les documents de Ged"><img src="../../../assets/ged.png" alt=""></button>
+               </div> 
+              <div class="col-lg-1">
+                <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click) = "affichePanier()" title="Mon panier de documents"><img src="../../../../assets/trash.png" alt=""></button>
+              </div> 
+               <div class="col-lg-1">
+                  <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click)='afficheMesDocumentFavories()' title="Mes demandes de permis validés"><img src="../../../assets/edit-document.png" alt=""></button>
+               </div> 
+                  <div class="col-lg-2 pt-3">
+                      <div class="form-group ">
+                          <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-controlSelection form-control">
+                            <option value="all"><p class="Pselection">Type</p></option>
+                            <option value="Loi"><p class="Pselection">Loi</p></option>
+                            <option value="type2"><p class="Pselection">type2</p></option>
+                            <option value="type3"><p class="Pselection">type3</p></option>
+                            <option value="type4"><p class="Pselection">type4</p></option>
+                            <option>Tesla</option>
+                          </select>
                       </div>
-    </div>
+                    </div>
+                <div class="col-lg-2.5 pt-3">
+                      <div class="form-group ">
+                          <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
+                            <option value="all"><p>Catégorie</p></option>
+                            <option value="categorie1"><p class="Pselection">categorie1</p></option>
+                            <option value="categorie2"><p class="Pselection">categorie2</p></option>
+                            <option value="categorie3"><p class="Pselection">categorie3</p></option>
+                            <option value="categorie4"><p class="Pselection">categorie4</p></option>
+                          </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-2 pt-3">
+                        <div class="form-group ">
+                          <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
+                            <option value="all"> <p class="Pselection">Afficher</p> </option>
+                            <option value="2"><p class="Pselection">2 Documents</p></option>
+                            <option value="4"><p class="Pselection">4 Documents</p></option>
+                            <option value="8"><p class="Pselection">8 Documents</p></option>
+                            <option value="10"><p class="Pselection">10 Documents</p></option>
+                          </select>
+                        </div>
+                    </div>  
+                    <div class="col-lg-2">
+                      <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success "> <p class="Pfiltre">Filtre</p></button>
+                    </div>
+           </div>
+        </ng-container>
+      <ng-template #elseTemplate>
+           
+          <div class="row align-items-center justify-content-center">
+                          
+              <div class="col-lg-3 pt-3">
+                  <div class="form-group ">
+                      <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-controlSelection form-control">
+                        <option value="all"><p class="Pselection">Type</p></option>
+                        <option value="Loi"><p class="Pselection">Loi</p></option>
+                        <option value="type2"><p class="Pselection">type2</p></option>
+                        <option value="type3"><p class="Pselection">type3</p></option>
+                        <option value="type4"><p class="Pselection">type4</p></option>
+                        <option>Tesla</option>
+                      </select>
+                  </div>
+                </div>
+            <div class="col-lg-3 pt-3">
+                  <div class="form-group ">
+                      <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
+                        <option value="all"><p>Catégorie</p></option>
+                        <option value="categorie1"><p class="Pselection">categorie1</p></option>
+                        <option value="categorie2"><p class="Pselection">categorie2</p></option>
+                        <option value="categorie3"><p class="Pselection">categorie3</p></option>
+                        <option value="categorie4"><p class="Pselection">categorie4</p></option>
+                      </select>
+                  </div>
+                </div>
+                
+                <div class="col-lg-3 pt-3">
+                    <div class="form-group ">
+                      <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
+                        <option value="all"> <p class="Pselection">Afficher</p> </option>
+                        <option value="2"><p class="Pselection">2 Documents</p></option>
+                        <option value="4"><p class="Pselection">4 Documents</p></option>
+                        <option value="8"><p class="Pselection">8 Documents</p></option>
+                        <option value="10"><p class="Pselection">10 Documents</p></option>
+                      </select>
+                    </div>
+                </div>  
+                <div class="col-lg-2">
+                  <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success "> <p class="Pfiltre">Filtre</p></button>
+                </div>
+         </div>
+
+      </ng-template>
+      
+       
+     </div>
     
     
-    
-    
-  <div *ngIf="ged">
+     <ng-container *ngIf="ged; else elseTemplate2">
       <div class="container">
         <div class="row">
-          
+         
             <div class="col-12 col-sm-4  col-md-6 col-lg-6 col"*ngFor="let document of dc"  >
                
                <app-card-doc  [doc]=document ></app-card-doc>
              </div>
           </div>
       </div>
-  </div>
+     </ng-container>
+     <ng-template #elseTemplate2>
+      <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+     </ng-template>
+     
+    
+  
  
 
 </div>

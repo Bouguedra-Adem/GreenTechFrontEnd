@@ -1,0 +1,42 @@
+.container_fluid{
+   
+    
+    background:  #00000005;
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+
+
+}
+.form-inline{
+    margin-left: 30%;
+}
+.form-inline .form-control {
+    width: 44%;
+    height: 55px;
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+    
+}
+.btnSerch{
+    color: white;
+    border-color:  #a4d470; 
+    background-color:#a4d470; 
+    border-radius: 78px 78px 78px 78px;
+    -moz-border-radius: 78px 78px 78px 78px;
+    -webkit-border-radius: 78px 78px 78px 78px;
+    width: 15%;
+    height: 45;
+}
+a:not([href]):not([tabindex]) {
+    color: white; 
+    text-decoration: none;
+}
+a {
+    color:black;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+
+}

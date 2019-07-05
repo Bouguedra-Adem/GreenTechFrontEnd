@@ -49,7 +49,7 @@
     flex-direction: column;
     width: 144%;
     pointer-events: auto;
-    background-color: #3e3b3b6e;
+    background-color: #3e3b3bdb;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: .3rem;
@@ -63,7 +63,12 @@ element.style {
  .modal {
     overflow-x: hidden;
     overflow-y: auto;
-    background: #9e9191d6;
+    
+}
+.IMGclass{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .modal-header {
   
@@ -79,10 +84,11 @@ border-bottom: 0px solid #dee2e6;
     background-color:#a4d470; 
     border-color: #a4d470;
 }
+
 .modal-title{
     font-weight: bold;
     font-size: 220%;
-    padding-left: 35%;
+    padding-left: 40%;
     color: #a4d470;
     text-transform: uppercase;
     
