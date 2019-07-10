@@ -1,90 +1,148 @@
+<div *ngIf="apa">
+  <div class="container ">
+    <!-- Card Start -->
+    <div class="card shadow">
+      <div class="row ">
 
-        <div *ngIf="apa">
-            <div class="container py-3">
-              
-                <!-- Card Start -->
-                <div class="card">
-                  <div class="row ">
-              
-                    <div class="col-lg-7 px-3">
-                      <div class="card-block px-6">
-                        <h4 class="card-title">{{apa.nameAPA}}</h4>
-                        <p class="card-text">
-                             Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. 
-                            
-                        </p>
-                        
-                        <br>
-                        <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <img class="d-block w-100" src="../../../../../assets/apa.jpg" alt="">
-                     </div>
-                
-                  </div> 
+        <div class="col-lg-7 ">
+          <div class="card-block ">
+            <h4 class="card-title" style="text-transform: uppercase">{{apa.nameAPA}}</h4>
+            <p>{{apa.descriptionAPA.slice(0, 160)}} ...</p>
+            <br><hr>
+            <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+              data-toggle="tooltip" data-placement="bottom" title="Voir plus d'informations sur ce document"
+              data-toggle="modal" [attr.data-target]="'#DetailApaDocument'+ this.apa.id"><b>VOIR PLUS </b> <i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
+              data-placement="bottom" title="Supprimer ce document" 
+              data-toggle="modal" [attr.data-target]="'#deleteModal'+ this.apa.id"><i
+                class="fa fa-times"></i></button>
+            <button type="button" class="btn btnSerch" style="margin-right: 5px" data-toggle="tooltip"
+              data-placement="bottom" title="Modifier ce document" data-toggle="modal" [attr.data-target]="'#modificationModal'+ this.apa.id"><i
+                class="fa fa-pencil"></i></button>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <img class="d-block w-100" src="../../../../../assets/apa.jpg" alt="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <!-- Modal  1-->
+    <div class="modal fade" attr.id="DetailApaDocument{{this.apa.id}}" tabindex="-1" role="dialog" attr.aria-labelledby="exampleModalCenterTitle{{this.apa.id}}"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h3 class="modal-title"attr.id="exampleModalCenterTitle{{this.apa.id}}" style="text-transform: uppercase">{{this.apa.nameAPA}}</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p style="text-align: justify">{{this.apa.descriptionAPA}}</p>
+            <ngx-extended-pdf-viewer src="../../../../assets/loi.pdf" useBrowserLocale=" true " height=" 90vh "
+              [showPrintButton]="false" [showBookmarkButton]="false" [showOpenFileButton]="false"
+              [showDownloadButton]="true" [showSidebarButton]="true" delayFirstView="2000">
+            </ngx-extended-pdf-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal  2-->
+    <div class="modal fade" attr.id="modificationModal{{this.apa.id}}" tabindex="-1" role="dialog" attr.aria-labelledby="modificationModalLabel{{this.apa.id}}"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" attr.id="modificationModalLabel{{this.apa.id}}">Modification du document : {{this.apa.nameAPA}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST">
+              <div class="form-group">
+                <label for="apaNomDocument">Nom</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                  <input type="text" attr.name="nameAPA{{this.apa.id}}" required class="form-control" attr.value="{{this.apa.nameAPA}}" [(ngModel)]="this.apa.nameAPA" [ngModelOptions]="{standalone:true}">
                 </div>
               </div>
-           
-  
-           <div class="container">
-           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog  " >
-              <div class="modal-content ">
-                <div class="modal-header">
-                  <h5 class="modal-title " id="exampleModalCenterTitle">Titre Document</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+              <div class="form-group">
+                <label for="apaDescriptionDocument">Description</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-file-text-o"></i></div>
+                  <textarea type="text" attr.name="descriptionAPA{{this.apa.id}}" required class="form-control" value="{{this.apa.descriptionAPA}}" [(ngModel)]="this.apa.descriptionAPA" [ngModelOptions]="{standalone:true}"></textarea>
                 </div>
-                <div class="modal-body">
-                    
-                        <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                            Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum
-                        </p>
-                  
-                </div>
-                <div class="modal-footer">
-                   
-                    <button ><img  src="../../../../../assets//cloud-storage-download.png" alt=""></button>
-                </div>
-               
               </div>
+              <div class="form-group">
+                <label for="apaDescriptionDocument">Type</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                  <input type="text" attr.name="typeAPA{{this.apa.id}}" required class="form-control" attr.value="{{this.apa.typeAPA}}" [(ngModel)]="this.apa.typeAPA" [ngModelOptions]="{standalone:true}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="apaDescriptionDocument">Catégorie</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                  <input type="text" attr.name="categorieAPA{{this.apa.id}}" required class="form-control" attr.value="{{this.apa.categorieAPA}}" [(ngModel)]="apa.categorieAPA" [ngModelOptions]="{standalone:true}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="apaDescriptionDocument">Tag</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-tag"></i></div>
+                  <input type="text" attr.name="tagAPA{{this.apa.id}}" required class="form-control" attr.value="{{this.apa.tagAPA}}" [(ngModel)]="this.apa.tagAPA" [ngModelOptions]="{standalone:true}">
+                </div>
+              </div>
+            </form>
+            <div *ngIf="updateAlertisVisibleError" class="col-12 alert alert-danger"
+                style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+                Désolé, une erreur s'est produite !
+            </div>
+            <div *ngIf="updateAlertisVisibleSuccess" class="col-12 alert alert-success"
+                style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+                Votre document a été modifié avec succés, merci
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              <button type="submit" (click)="updateActive()" class="btn btnSerch">Enregistrer</button>
             </div>
           </div>
         </div>
- 
+      </div>
+
+    </div>
+     <!-- Modal  3-->
+     <div class="modal fade" attr.id="deleteModal{{this.apa.id}}" tabindex="-1" role="dialog" attr.aria-labelledby="deleteModalLabel{{this.apa.id}}"
+     aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" attr.id="deleteModalLabel{{this.apa.id}}">Suppression du document : {{this.apa.nameAPA}}</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+            <h6>Etes vous sur de vouloir supprimer ce document ?</h6>
+           <div *ngIf="deleteAlertisVisibleSuccess" class="col-11 alert alert-success"
+            style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+            Votre document a été supprimé avec succés, merci
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+             <button type="submit" (click)="deleteApa()" class="btn btn-danger"><i class="fa fa-times"></i> Supprimer</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+   </div>
+  </div>
+</div>
