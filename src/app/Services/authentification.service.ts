@@ -26,7 +26,7 @@ export class AuthentificationService {
      
    }
 
-    Login(pass :String){
+    Login(pass:String){
       let param: any = {'password': pass};
        this.http.get<User>('//localhost:8080/User/var',{params: param}).subscribe(user=>{
          console.log(user)

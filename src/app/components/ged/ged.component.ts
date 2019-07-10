@@ -31,8 +31,9 @@ export class GedComponent implements OnInit {
    console.log(this.Categorie);
    console.log(this.Type);
    if (this.AuthService.getCurrentUser()!=null){
-     console.log("je suis la")
-     this.role=this.AuthService.getCurrentUser().role
+     console.log("je suis la");
+     this.role=this.AuthService.getCurrentUser().role;
+     
    }
   
   }
