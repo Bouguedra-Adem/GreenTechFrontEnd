@@ -24,6 +24,8 @@ import { AuthentificationService } from './Services/authentification.service';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { RessourceDetailsComponent } from './components/ressource/ressource-details/ressource-details.component';
+import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,7 @@ import { RessourceDetailsComponent } from './components/ressource/ressource-deta
     CreatioCompteComponent,
     SeConnecteComponent,
     RessourceDetailsComponent,
+    AnnuairePagesComponent,
   ],
   imports: [
     BrowserModule,
