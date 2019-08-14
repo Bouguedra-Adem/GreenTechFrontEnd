@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthentificationService } from './Services/authentification.service';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annu
     CreatioCompteComponent,
     SeConnecteComponent,
     AnnuairePagesComponent,
+    AdminDashComponent,
   
   
   ],
