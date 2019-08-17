@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../ModelClasse/user/user';
 import { Doc } from '../ModelClasse/Lot1_5/doc';
+import { resolve } from 'url';
 
 
 @Injectable({
@@ -10,23 +11,26 @@ import { Doc } from '../ModelClasse/Lot1_5/doc';
 })
 export class AuthentificationService {
 
-     
+
    
      httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'my-auth-token'
       })
+      
     }
+  
   constructor(private http:HttpClient) {
-        
+ 
    }
+   
    ngOnInit(): void {
     
      
    }
 
-    Login(pass :String){
+    Login(pass:String){
       let param: any = {'password': pass};
        this.http.get<User>('//localhost:8080/User/var',{params: param}).subscribe(user=>{
          console.log(user)
@@ -88,8 +92,26 @@ export class AuthentificationService {
 
     return this.http.get<User[]>("//localhost:8080/AllUser")
    }
+   deliteUser(id :number ){
+    console.log("hhhhh"+id)
+    const url = `//localhost:8080/User/${id}`; // DELETE api/heroes/42
+    return this.http.delete(url, this.httpOptions).subscribe(res => {     
+      console.log(res);
+     }, err => {               
+      console.log(err);
+     });
+   }
+   setUserValide(valide :number,id:number){
+      console.log("hhhhh"+id)
+      const url = `//localhost:8080/User/${id}`; // DELETE api/heroes/42
+      return this.http.delete(url, this.httpOptions).subscribe(res => {     
+        console.log(res);
+      }, err => {               
+        console.log(err);
+      });
+   }
    DeleteDocument(iddoc:any,iduser:any){
-    this.http.delete('//localhost:8080/User/Document/${iddoc}/${iduser}',null)
+    this.http.delete<void>('//localhost:8080/User/Document/${iddoc}/${iduser}')
    }
    ifUserValide (pass:String):any{
     let param: any = {'password': pass};
@@ -101,7 +123,7 @@ export class AuthentificationService {
   }
   UpdateUserValide(valide:any,iduser:any){
     let param: any = {'valide':valide,'iduser':iduser};
-    this.http.put('//localhost:8080/User/val',this.httpOptions,{params:param}).subscribe(
+    this.http.put('//localhost:8080/User/valide',this.httpOptions,{params:param}).subscribe(
       (val) => {
         console.log('POST call successful value returned in body',
           val);

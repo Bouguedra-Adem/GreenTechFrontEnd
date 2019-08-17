@@ -8,24 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./se-connecte.component.css']
 })
 export class SeConnecteComponent implements OnInit {
-  public email:String
-  public pass:String
-  constructor(private Auth:AuthentificationService,private router:Router) { }
+  public email: String
+  public pass: String
+  constructor(private Auth: AuthentificationService, private router: Router) { }
 
   ngOnInit() {
   }
-SignIn(){
-  if (this.email!='' && this.pass!=''){
-    this.Auth.Login(this.pass)
-    
-    this.router.navigate(['/']).then(()=>{
-      window.location.reload()
-    })
-    
-   
+  SignIn() {
+    if (this.email != '' && this.pass != '') {
+      this.Auth.Login(this.pass);
 
-
-    
+      this.router.navigate(['/']).then(() => {
+        window.location.reload();
+      });
+    }
   }
-}
 }
