@@ -15,7 +15,7 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
-                <ng-container *ngIf="role=='utilisateur' || role=='admin' || role=='editeur && valide=='1'; else elseTemplate">
+                <ng-container *ngIf="valide=='1' && role=='utilisateur' || role=='admin' || role=='editeur' ; else elseTemplate">
                    <li class="nav-item">
                         <a class="nav-link" routerLink="/" (click)="logout()" ><span> Déonnecté(e) </span>  </a>
                    </li>  
@@ -57,17 +57,17 @@
       <li class="nav-item" >
             <a class="nav-link nav-link1" routerLink="/Ressource">RESSOURCES</a>
       </li>
-      <div *ngIf="role=='admin'">
+      <div *ngIf="valide=='1' && role=='admin'">
         <li class="nav-item">
             <a class="nav-link nav-link1" routerLink="/dashborardAdmin">GESTION DES COMPTE </a>
          </li>
      </div>
-      <div *ngIf="role=='utilisateur'">
+      <div *ngIf="valide=='1' && role=='utilisateur'">
           <li class="nav-item">
               <a class="nav-link nav-link1" routerLink="/Permis">DEMANDE</a>
            </li>
       </div>
-      <div *ngIf="role=='editeur'">
+      <div *ngIf="valide=='1' && role=='editeur'">
           <li class="nav-item">
               <a class="nav-link nav-link1" routerLink="/RepoGed">GED PROCESSUS</a>
            </li>
