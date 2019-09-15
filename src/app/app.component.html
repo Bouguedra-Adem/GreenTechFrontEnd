@@ -15,7 +15,7 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
-                <ng-container *ngIf="role=='utilisateur' || role=='admin' || role=='editeur'; else elseTemplate">
+                <ng-container *ngIf="role=='utilisateur' || role=='admin' || role=='editeur && valide=='1'; else elseTemplate">
                    <li class="nav-item">
                         <a class="nav-link" routerLink="/" (click)="logout()" ><span> Déonnecté(e) </span>  </a>
                    </li>  
