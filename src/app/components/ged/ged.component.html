@@ -18,41 +18,28 @@
                <div class="col-lg-1">
                   <button type="button" class="btn btn-link"data-toggle="tooltip" data-placement="bottom" (click)='afficheMesDocumentFavories()' title="Mes demandes de permis validés"><img src="../../../assets/edit-document.png" alt=""></button>
                </div> 
-                  <div class="col-lg-2 pt-3">
+                  <div class="col-lg-2.5 pt-3">
                       <div class="form-group ">
                           <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-controlSelection form-control">
-                            <option value="all"><p class="Pselection">Type</p></option>
-                            <option value="Loi"><p class="Pselection">Loi</p></option>
-                            <option value="type2"><p class="Pselection">type2</p></option>
-                            <option value="type3"><p class="Pselection">type3</p></option>
-                            <option value="type4"><p class="Pselection">type4</p></option>
-                            <option>Tesla</option>
-                          </select>
-                      </div>
-                    </div>
-                <div class="col-lg-2.5 pt-3">
-                      <div class="form-group ">
-                          <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
-                            <option value="all"><p>Catégorie</p></option>
-                            <option value="categorie1"><p class="Pselection">categorie1</p></option>
-                            <option value="categorie2"><p class="Pselection">categorie2</p></option>
-                            <option value="categorie3"><p class="Pselection">categorie3</p></option>
-                            <option value="categorie4"><p class="Pselection">categorie4</p></option>
+                              <option value="Tous"><p>Tous Les Type</p></option>
+                              <option value="Pdf"><p class="Pselection">Pdf</p></option>
+                              <option value="Png"><p class="Pselection">Png</p></option>
                           </select>
                       </div>
                     </div>
                     
-                    <div class="col-lg-2 pt-3">
-                        <div class="form-group ">
-                          <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
-                            <option value="all"> <p class="Pselection">Afficher</p> </option>
-                            <option value="2"><p class="Pselection">2 Documents</p></option>
-                            <option value="4"><p class="Pselection">4 Documents</p></option>
-                            <option value="8"><p class="Pselection">8 Documents</p></option>
-                            <option value="10"><p class="Pselection">10 Documents</p></option>
+                    <div class="col-lg-1 pt-3"></div>  
+                <div class="col-lg-2.5 pt-3">
+                      <div class="form-group ">
+                          <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
+                              <option value="Tous"><p>Tous les catégorie</p></option>
+                              <option value="Loi"><p class="Pselection">Loi</p></option>
+                              <option value="Protocol"><p class="Pselection">Protocol</p></option>
+                    
                           </select>
-                        </div>
-                    </div>  
+                      </div>
+                    </div>
+                
                     <div class="col-lg-2">
                       <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success "> <p class="Pfiltre">Filtre</p></button>
                     </div>
@@ -65,11 +52,10 @@
               <div class="col-lg-3 pt-3">
                   <div class="form-group ">
                       <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')" class="form-controlSelection form-control">
-                        <option value="all"><p class="Pselection">Type</p></option>
-                        <option value="Loi"><p class="Pselection">Loi</p></option>
-                        <option value="type2"><p class="Pselection">type2</p></option>
-                        <option value="type3"><p class="Pselection">type3</p></option>
-                        <option value="type4"><p class="Pselection">type4</p></option>
+                        <option value="Tous"><p class="Pselection">Tous Les Type</p></option>
+                        <option value="Pdf"><p class="Pselection">Pdf</p></option>
+                        <option value="Png"><p class="Pselection">Png</p></option>
+                       
                         <option>Tesla</option>
                       </select>
                   </div>
@@ -77,26 +63,15 @@
             <div class="col-lg-3 pt-3">
                   <div class="form-group ">
                       <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')" class="form-controlSelection form-control">
-                        <option value="all"><p>Catégorie</p></option>
-                        <option value="categorie1"><p class="Pselection">categorie1</p></option>
-                        <option value="categorie2"><p class="Pselection">categorie2</p></option>
-                        <option value="categorie3"><p class="Pselection">categorie3</p></option>
-                        <option value="categorie4"><p class="Pselection">categorie4</p></option>
+                        <option value="Tous"><p>Catégorie</p></option>
+                        <option value="Loi"><p class="Pselection">categorie1</p></option>
+                        <option value="Protocol"><p class="Pselection">categorie2</p></option>
+              
                       </select>
                   </div>
                 </div>
                 
-                <div class="col-lg-3 pt-3">
-                    <div class="form-group ">
-                      <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')" class="form-controlSelection form-control">
-                        <option value="all"> <p class="Pselection">Afficher</p> </option>
-                        <option value="2"><p class="Pselection">2 Documents</p></option>
-                        <option value="4"><p class="Pselection">4 Documents</p></option>
-                        <option value="8"><p class="Pselection">8 Documents</p></option>
-                        <option value="10"><p class="Pselection">10 Documents</p></option>
-                      </select>
-                    </div>
-                </div>  
+               
                 <div class="col-lg-2">
                   <button type="button"  (click)="Filter()" class="mt-auto .btnSerch btn btn-outline-success "> <p class="Pfiltre">Filtre</p></button>
                 </div>
