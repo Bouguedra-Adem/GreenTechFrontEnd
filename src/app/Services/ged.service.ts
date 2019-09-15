@@ -8,7 +8,7 @@ export class GedService {
    public ged:Ged
    private GedUrl:String;
   constructor(private http: HttpClient) {
-    this.GedUrl="http://localhost:8080/Ged"
+    this.GedUrl="http://localhost:8080"
      
 
     
@@ -16,6 +16,6 @@ export class GedService {
   }
 
   getAll(): Observable<Ged> {
-    return this.http.get<Ged>('//localhost:8080/Ged');
+    return this.http.get<Ged>(this.GedUrl+'/Ged');
   }
 }
