@@ -20,7 +20,7 @@
                                   <div class="container">
                                       <div class="row">
                                         <div class="col-lg-8">
-                                           <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                           <a href="#" class="mt-auto btn btn-outline-success " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
                                         </div>
                                         <div class="col-lg-4">
                                             <button type="button" (click)="AddFavorier(doc.id)" class=" mt-auto   btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter à Votre Ged favories"><img src="../../../../../assets/trash.png" alt=""></button>
@@ -49,6 +49,7 @@
             <div class="modal-dialog  " >
               <div class="modal-content ">
                 <div class="modal-header">
+   
                   <!--<div class="container">
                       <div class="row">
                          <div class="col-lg-10">
@@ -68,7 +69,9 @@
                   
                 </div>
                 <div class="modal-body">
-                    <ngx-extended-pdf-viewer  [src]="ImageLien+doc.lienAssetes" useBrowserLocale = " true " height = " 90vh "
+                    
+                    <ngx-extended-pdf-viewer  [src]="ImageLien" useBrowserLocale = " true " height = " 90vh "
+
                      [showPrintButton]="false" [showBookmarkButton]="false"
                      [showOpenFileButton]="false" 
                      
@@ -78,8 +81,9 @@
                     <!--<img class="IMGclass" src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">-->
                   
                 </div>
-                
+              
             </div>
           </div>
         </div>
- 
+ </div>
+ </div>

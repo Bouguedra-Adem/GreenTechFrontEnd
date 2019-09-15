@@ -12,11 +12,12 @@ export class CardDocComponent implements OnInit {
    @Input () doc:Doc
    docum:Doc;
    role:String
-   ImageLien:String="../../../../../assets/ged/index/"
+   ImageLien:String//="../../../../../assets/ged/index/"
   
  
 
   constructor( private auth:AuthentificationService) { 
+    console.log(this.doc)
     if (this.auth.getCurrentUser()!=null){
       this.role=this.auth.getCurrentUser().role
       //this.ImageLien="../../../../../assets/ged/index/"+this.doc.lienAssetes
@@ -35,7 +36,12 @@ export class CardDocComponent implements OnInit {
   AddFavorier(docid:any){
     console.log("ademmmm")
     this.auth.saveDocument(docid,this.auth.getCurrentUser().id)
+    console.log(this.doc.lienAssetes)
 
+  }
+  Addlien(id:String){
+    this.ImageLien="../../../../../assets/ged/index/"+id
+    console.log("this mt link"+this.ImageLien)
   }
 
 }
