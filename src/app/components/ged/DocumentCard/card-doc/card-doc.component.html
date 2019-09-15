@@ -68,7 +68,7 @@
                   
                 </div>
                 <div class="modal-body">
-                    <ngx-extended-pdf-viewer  src="../../../../../assets/loi.pdf" useBrowserLocale = " true " height = " 90vh "
+                    <ngx-extended-pdf-viewer  [src]="ImageLien+doc.lienAssetes" useBrowserLocale = " true " height = " 90vh "
                      [showPrintButton]="false" [showBookmarkButton]="false"
                      [showOpenFileButton]="false" 
                      

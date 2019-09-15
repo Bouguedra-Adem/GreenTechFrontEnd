@@ -49,6 +49,7 @@ export class GedComponent implements OnInit {
       this.dc=this.ged.document
      
       this.SaveDocument=this.ged.document
+      console.log(this.dc)
     })
     
     }

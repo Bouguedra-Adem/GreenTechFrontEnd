@@ -70,15 +70,14 @@ export class CreatioCompteComponent implements OnInit {
      
        this.auth.Regester(this.user)
        this.afficheModal=true
-       setTimeout(() => 
-       {
-        this.router.navigate(['/Seconnecte'])
-       },
-        5000);
+      
       
      }
       
     
+    }
+    navigate (){
+      this.router.navigate(['/'])
     }
   
     

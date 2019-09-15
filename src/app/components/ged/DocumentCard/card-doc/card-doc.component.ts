@@ -12,20 +12,23 @@ export class CardDocComponent implements OnInit {
    @Input () doc:Doc
    docum:Doc;
    role:String
+   ImageLien:String="../../../../../assets/ged/index/"
   
  
 
   constructor( private auth:AuthentificationService) { 
     if (this.auth.getCurrentUser()!=null){
       this.role=this.auth.getCurrentUser().role
-     
+      //this.ImageLien="../../../../../assets/ged/index/"+this.doc.lienAssetes
+      console.log(this.ImageLien)
     }  
   
   }
 
   ngOnInit() {
    
-   
+    //this.ImageLien="../../../../../assets/ged/index/"+this.doc.lienAssetes
+    console.log(this.doc)
    
    
   }
