@@ -1,0 +1,16 @@
+.h55{
+    font-weight: bold;
+    text-align: center;
+    font-size: 220%;
+   padding-top: 4%;
+   padding-bottom: 1%;
+   color:rgba(131, 136, 129, 0.75);
+}
+.btnSerch{
+    color:white;
+    background-color:#a4d470; 
+    border-radius: 8px;
+    margin-left: 38%;
+    margin-bottom: 5%
+
+}

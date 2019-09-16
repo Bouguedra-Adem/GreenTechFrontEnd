@@ -40,6 +40,7 @@ export class CardDocComponent implements OnInit {
 
   }
   Addlien(id:String){
+    console.log("this mt link"+this.ImageLien)
     this.ImageLien="../../../../../assets/ged/index/"+id
     console.log("this mt link"+this.ImageLien)
   }
