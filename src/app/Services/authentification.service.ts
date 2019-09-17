@@ -105,7 +105,7 @@ export class AuthentificationService {
    setUserRole(Role :string,id:number){
     console.log("hhhhh"+id)
     const url = this.AuthUrl+`/User/${id}`; // DELETE api/heroes/42
-    return this.http.delete(url, this.httpOptions).subscribe(res => {     
+    return this.http.put(url, this.httpOptions).subscribe(res => {     
       console.log(res);
     }, err => {               
       console.log(err);

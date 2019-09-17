@@ -49,7 +49,7 @@ export class RessourceComponent implements OnInit {
 
     if (tagText !== '') {
       this.SaveDocument.forEach(element => {
-        if (element.RessourceName==tagText) {
+        if (element.ressource_name==tagText) {
           this.ressources.push(element);
           console.log('UPPERCASE');
           i++;
@@ -77,7 +77,7 @@ export class RessourceComponent implements OnInit {
     this.ressourceFilter = [];
     if (this.Type !== 'tous') {
       for (i; i < this.ressources.length; i++) {
-        if (this.ressources[i].RessourceType === this.Type) {
+        if (this.ressources[i].ressource_type === this.Type) {
           this.ressourceFilter[j] = this.ressources[i];
           j++;
 
@@ -93,10 +93,10 @@ export class RessourceComponent implements OnInit {
   addRessource() {
     const ressource: Ressource = new Ressource();
 
-    ressource.RessourceName = this.ressourceNomDocument;
-    ressource.RessourceDescription = this.ressourceDescriptionDocument;
-    ressource.RessourceType = this.ressourceTypeDocument;
-    ressource.RessourceOcccupe =0;
+    ressource.ressource_name= this.ressourceNomDocument;
+    ressource.ressource_description = this.ressourceDescriptionDocument;
+    ressource.ressource_type = this.ressourceTypeDocument;
+    ressource.ressource_occcupe =0;
 
     console.log(ressource);
     this.ressourceService.CreatRESSOURCE(ressource);

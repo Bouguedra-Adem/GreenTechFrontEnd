@@ -1,9 +1,9 @@
 export class Ressource {
     id: any;
-    RessourceName: String;
-    RessourceDescription: String;
-    RessourceType: String;
-    RessourceImage: String;
-    RessourceOcccupe:any;
+    ressource_name: String;
+    ressource_description: String;
+    ressource_type: String;
+    ressource_image: String;
+    ressource_occcupe:any;
     
 }

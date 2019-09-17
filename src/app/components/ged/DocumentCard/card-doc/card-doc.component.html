@@ -30,7 +30,17 @@
                               
                           </ng-container>
                           <ng-template #elseTemplate>
-                              <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               <ng-container *ngIf="role=='admin'; else elseTemplate4">
+                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               </ng-container>
+                               <ng-template #elseTemplate4>
+                                  <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
+                                  data-placement="bottom" title="Supprimer de document" data-toggle="modal"
+                                  [attr.data-target]="'#deleteModal'+doc.id"><i class="fa fa-times"></i></button>
+                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               </ng-template>
+                               
+                             
                           </ng-template>  
                       </div>
                     </div>
@@ -87,3 +97,30 @@
         </div>
  </div>
  </div>
+ <div class="modal fade" attr.id="deleteModal{{doc.id}}" tabindex="-1" role="dialog"
+ attr.aria-labelledby="deleteModalLabel{{doc.id}}" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" attr.id="deleteModalLabel{{doc.id}}">Suppression du document :
+         {{doc.nameDocument}}</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <h6>Etes vous sur de vouloir supprimer ce document ?</h6>
+       <div *ngIf="deleteAlertisVisibleSuccess" class="col-11 alert alert-success"
+         style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+         Votre docuemnt a été supprimée avec succés, merci
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+         <button type="submit" (click)="deletedoc()" class="btn btn-danger"><i class="fa fa-times"></i>
+           Supprimer</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+</div>

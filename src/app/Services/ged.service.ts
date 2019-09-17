@@ -36,6 +36,23 @@ export class GedService {
       console.log(err);
     });
   }
+  deleteDoc(iddoc:any){
+    this.http.delete(this.GedUrl+`/Doc/${iddoc}`,this.httpOptions).subscribe(
+      (val) => {
+        console.log('POST call successful value returned in body',
+          val);
+        
+      },
+      response => {
+        console.log('POST call in error', response);
+       
+      },
+      () => {
+        console.log('The POST observable is now completed.');
+       
+      });
+      
+  }
   getAllIndex():Observable<IndexDoc[]>{
     return this.http.get<IndexDoc[]>(this.GedUrl+'/DocIndex')
   }
