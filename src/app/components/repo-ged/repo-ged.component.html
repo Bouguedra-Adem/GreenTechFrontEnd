@@ -1,8 +1,9 @@
 <div class="continer_fluid">
   <h5 class="h55">Document Ged non Indexé</h5>
-  <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouterDocumentModal"
+  <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouteIndex"
                 data-placement="bottom" title="Ajouter un nouveau document"><i class="fa fa-plus-circle"></i><b> AJOUTER
-                  UN NOUVEAU DOCUMENT</b></button>
+                  UN NOUVEAU DOCUMENT</b>
+  </button>
       <div class="continer_fluid">
       <div class="row">
           <div *ngFor="let doc of docindex">
@@ -14,7 +15,8 @@
                 <div class="card" style="width: 18rem;">
                     <img [src]="ImageLien" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ajouterDocumentModal">Indéxer document {{doc.nameDocument}}</a>
+                      <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ajouterDocumentModal">Indéxer document {{doc.nameDocument}}</a><br><br>
+                      <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.nameDocument)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
                     </div>
                   </div> 
            </div> 
@@ -88,7 +90,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                      
                       <button type="button" class="btn btnSerch" (click)="indexer(doc.id,doc.nameDocument)" ><i class="fa fa-plus-circle"></i><b>Indéxer</b></button>
                     </div>
                   </div>
@@ -104,3 +106,73 @@
 
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="container">
+    <div class="modal modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog1  " >
+       <div class="modal-content modal-content1 ">
+         <div class="modal-header modal-header1">
+
+           <!--<div class="container">
+               <div class="row">
+                  <div class="col-lg-10">
+                     <h5 class="modal-title " id="exampleModalCenterTitle">Titre Document</h5>
+                     
+                 </div>
+            <div class="col-lg-1">
+                     <button ><img  src="../../../../../assets//cloud-storage-download.png" alt=""></button>
+                 </div>-->
+                 
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+              
+             <!--  </div>
+           </div>-->
+           
+         </div>
+         <div class="modal-body modal-body1">
+             
+             <ngx-extended-pdf-viewer  [src]="ImageLien2" useBrowserLocale = " true " height = " 90vh "
+
+              [showPrintButton]="false" [showBookmarkButton]="false"
+              [showOpenFileButton]="false" 
+              
+               [showDownloadButton]="true"
+               [showSidebarButton]="true" 
+                delayFirstView="2000"  > </ngx-extended-pdf-viewer>  
+             <!--<img class="IMGclass" src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">-->
+           
+         </div>
+       
+     </div>
+   </div>
+ </div>
+</div>
+<div class="modal fade" id="ajouteIndex" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau document :</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="apaNomDocument">Nom Document</label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+            <input type="text" name="NomIndexDocument" [(ngModel)]="NomIndexDocument" class="form-control" id="NomIndexDocument" placeholder="Entrez le nom du document">
+          </div>
+        </div>  
+      </form>
+    </div>
+    <div class="modal-footer">
+  
+      <button type="button" class="btn btnSerch" (click)="createindex(NomIndexDocument)" ><i class="fa fa-plus-circle"></i><b> Ajouter Document Non Indexéer</b></button>
+    </div>
+  </div>
+</div>
+</div>

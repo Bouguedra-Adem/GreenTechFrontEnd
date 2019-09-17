@@ -25,6 +25,7 @@ export class RepoGedComponent implements OnInit {
     public nameDocumentIndex:String
     addAlertisVisibleError:boolean=false
     addAlertisVisibleSuccess:boolean=false
+    ImageLien2:String//="../../../../../assets/ged/non_index/"
 
   constructor(private gedServie :GedService) { }
 
@@ -67,8 +68,21 @@ export class RepoGedComponent implements OnInit {
       this.addAlertisVisibleError=true
     }
   }
-  createindex(){
-
+  Addlien(id:String){
+    console.log("this mt link"+this.ImageLien2)
+    this.ImageLien2="../../../../../assets/ged/non_index/"+id
+    console.log("this mt link"+this.ImageLien2)
+  }
+  createindex(nameDoc:String){
+ 
+    if (nameDoc!=""){
+      this.docIndex=new IndexDoc()
+      this.docIndex.nameDocument=nameDoc+".pdf"
+      console.log(  this.docIndex.nameDocument)
+      this.docIndex.index=0
+      this.gedServie.SaveIndex(this.docIndex)
+    }
+    
   }
 
 }

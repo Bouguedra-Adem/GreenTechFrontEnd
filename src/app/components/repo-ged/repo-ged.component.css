@@ -14,3 +14,67 @@
     margin-bottom: 5%
 
 }
+.modal-content1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 144%;
+    pointer-events: auto;
+    background-color: #3e3b3bdb;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+}
+element.style {
+    padding-right: 17px;
+    display: block;
+  
+}
+ .modal1 {
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+}
+.IMGclass{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.modal-header1 {
+  
+border-bottom: 0px solid #dee2e6; 
+   
+}
+.btn-outline-success {
+    color: #a4d470;
+    border-color: #a4d470;
+}
+.btn-outline-success:hover {
+    color: #ffffff;
+    background-color:#a4d470; 
+    border-color: #a4d470;
+}
+
+.modal-title1{
+    font-weight: bold;
+    font-size: 220%;
+    padding-left: 40%;
+    color: #a4d470;
+    text-transform: uppercase;
+    
+
+}
+.text-justify{
+    color: #dee2e6;
+}
+.modal-footer1 {
+ border-top: 0px solid #dee2e6; 
+}
+@media (min-width: 576px){
+.modal-dialog1  {
+    max-width: 50%;
+    margin: 1rem auto;
+    margin-right: 34%;
+}
+}
