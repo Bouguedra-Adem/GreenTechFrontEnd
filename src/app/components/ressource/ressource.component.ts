@@ -49,7 +49,7 @@ export class RessourceComponent implements OnInit {
 
     if (tagText !== '') {
       this.SaveDocument.forEach(element => {
-        if (element.tagRESSOURCE.split(',').includes(tagText)) {
+        if (element.RessourceName==tagText) {
           this.ressources.push(element);
           console.log('UPPERCASE');
           i++;
@@ -77,7 +77,7 @@ export class RessourceComponent implements OnInit {
     this.ressourceFilter = [];
     if (this.Type !== 'tous') {
       for (i; i < this.ressources.length; i++) {
-        if (this.ressources[i].typeRESSOURCE === this.Type) {
+        if (this.ressources[i].RessourceType === this.Type) {
           this.ressourceFilter[j] = this.ressources[i];
           j++;
 
@@ -93,14 +93,10 @@ export class RessourceComponent implements OnInit {
   addRessource() {
     const ressource: Ressource = new Ressource();
 
-    ressource.nameRESSOURCE = this.ressourceNomDocument;
-    ressource.descriptionRESSOURCE = this.ressourceDescriptionDocument;
-    ressource.categorieRESSOURCE = this.ressourceCategorieDocument;
-    ressource.typeRESSOURCE = this.ressourceTypeDocument;
-    ressource.tagRESSOURCE = this.ressourceTagDocument;
-    ressource.datePublicationRESSOURCE = formatDate(new Date(), 'yyyy/MM/dd | HH:mm:ss', 'en').toString();
-    ressource.dateMaj = formatDate(new Date(), 'yyyy/MM/dd | HH:mm:ss', 'en').toString();
-    ressource.idEditeur = this.auth.getCurrentUser().id;
+    ressource.RessourceName = this.ressourceNomDocument;
+    ressource.RessourceDescription = this.ressourceDescriptionDocument;
+    ressource.RessourceType = this.ressourceTypeDocument;
+    ressource.RessourceOcccupe =0;
 
     console.log(ressource);
     this.ressourceService.CreatRESSOURCE(ressource);
