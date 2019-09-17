@@ -22,6 +22,7 @@ export class RessourceComponent implements OnInit {
   private ressourceFilter: Ressource[];
   private TypeTwo: String = 'aucun';
   private CategorieTwo: String = 'aucun';
+   Type="tous"
   private Nbresult: number = 3;
   private SaveDocument: Ressource[];
   private inputRech: String;
@@ -74,20 +75,12 @@ export class RessourceComponent implements OnInit {
     let j = 0;
     this.ressources = this.SaveDocument;
     this.ressourceFilter = [];
-    if (this.TypeTwo !== 'aucun' || this.CategorieTwo !== 'aucun') {
+    if (this.Type !== 'tous') {
       for (i; i < this.ressources.length; i++) {
-        if (this.ressources[i].typeRESSOURCE === this.TypeTwo && this.ressources[i].categorieRESSOURCE === this.CategorieTwo) {
+        if (this.ressources[i].typeRESSOURCE === this.Type) {
           this.ressourceFilter[j] = this.ressources[i];
           j++;
 
-        }
-        if (this.ressources[i].categorieRESSOURCE === this.CategorieTwo && this.TypeTwo === 'aucun') {
-          this.ressourceFilter[j] = this.ressources[i];
-          j++;
-        }
-        if (this.ressources[i].typeRESSOURCE === this.TypeTwo && this.CategorieTwo === 'aucun') {
-          this.ressourceFilter[j] = this.ressources[i];
-          j++;
         }
       }
       this.ressources = this.ressourceFilter;
