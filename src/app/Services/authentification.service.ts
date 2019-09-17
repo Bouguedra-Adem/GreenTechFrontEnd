@@ -101,15 +101,16 @@ export class AuthentificationService {
       console.log(err);
      });
    }
-   setUserValide(valide :number,id:number){
-      console.log("hhhhh"+id)
-      const url = this.AuthUrl+`/User/${id}`; // DELETE api/heroes/42
-      return this.http.delete(url, this.httpOptions).subscribe(res => {     
-        console.log(res);
-      }, err => {               
-        console.log(err);
-      });
-   }
+   
+   setUserRole(Role :string,id:number){
+    console.log("hhhhh"+id)
+    const url = this.AuthUrl+`/User/${id}`; // DELETE api/heroes/42
+    return this.http.delete(url, this.httpOptions).subscribe(res => {     
+      console.log(res);
+    }, err => {               
+      console.log(err);
+    });
+ }
    DeleteDocument(iddoc:any,iduser:any){
     this.http.delete<void>(this.AuthUrl+'/User/Document/${iddoc}/${iduser}')
    }
@@ -124,6 +125,23 @@ export class AuthentificationService {
   UpdateUserValide(valide:any,iduser:any){
     let param: any = {'valide':valide,'iduser':iduser};
     this.http.put(this.AuthUrl+'/User/valide',this.httpOptions,{params:param}).subscribe(
+      (val) => {
+        console.log('POST call successful value returned in body',
+          val);
+        
+      },
+      response => {
+        console.log('POST call in error', response);
+       
+      },
+      () => {
+        console.log('The POST observable is now completed.');
+       
+      });
+  }
+  UpdateUserRole(role:any,iduser:any){
+    let param: any = {'role':role,'iduser':iduser};
+    this.http.put(this.AuthUrl+'/User/Role',this.httpOptions,{params:param}).subscribe(
       (val) => {
         console.log('POST call successful value returned in body',
           val);

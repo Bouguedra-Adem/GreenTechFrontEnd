@@ -46,6 +46,20 @@ export class AdminDashComponent implements OnInit {
       this.AuthService.deliteUser(Number(index))
      this.getAllUser()
     } 
+
+    SetRole(id:any,role:string) {
+      this.AuthService.UpdateUserRole(role,id)
+     /*if(event.target.checked){
+        
+        
+      }
+      else{
+        this.AuthService.UpdateUserValide(0,Number(index))
+      
+      }*/
+      console.log(id,role)
+     
+    } 
   }
 
  
