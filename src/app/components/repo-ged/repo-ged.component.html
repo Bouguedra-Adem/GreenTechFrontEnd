@@ -1,0 +1,178 @@
+<div class="continer_fluid">
+  <h5 class="h55">Document Ged non Indexé</h5>
+  <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouteIndex"
+                data-placement="bottom" title="Ajouter un nouveau document"><i class="fa fa-plus-circle"></i><b> AJOUTER
+                  UN NOUVEAU DOCUMENT</b>
+  </button>
+      <div class="continer_fluid">
+      <div class="row">
+          <div *ngFor="let doc of docindex">
+          <ng-container *ngIf="doc.index!=1; else elseTemplate">
+            
+          
+            
+          <div class="col-sm-12  col-md-12 col-lg-12 ">
+                <div class="card" style="width: 18rem;">
+                    <img [src]="ImageLien" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ajouterDocumentModal">Indéxer document {{doc.nameDocument}}</a><br><br>
+                      <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.nameDocument)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                    </div>
+                  </div> 
+           </div> 
+           <div class="modal fade" id="ajouterDocumentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Indexation De Document :</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="apaNomDocument">Nom de document</label>
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                            <input type="text" name="apaNomDocument" [(ngModel)]="nameDocument" class="form-control" id="apaNomDocument" placeholder="Entrez le nom du document">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="apaDescriptionDocument">Bref Description</label>
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-file-text-o"></i></div>
+                            <textarea type="text" name="apaDescriptionDocument" [(ngModel)]="bref_Description" class="form-control" id="apaDescriptionDocument"
+                              placeholder="Entrez la description du document"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="apaDescriptionDocument">Type</label>
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                            <input type="text" name="apaTypeDocument" [(ngModel)]="type" class="form-control" id="apaTypeDocument"
+                              placeholder="Entrez le type du document">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="apaDescriptionDocument">Catégorie</label>
+                          <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                            <input type="text" name="apaCategorieDocument" [(ngModel)]="categorie" class="form-control" id="apaCategorieDocument"
+                              placeholder="Entrez la catégorie du document">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apaDescriptionDocument">Tag</label>
+                            <div class="input-group-prepend">
+                              <div class="input-group-text"><i class="fa fa-tag"></i></div>
+                              <input type="text" name="apaTagDocument" [(ngModel)]="tag" class="form-control" id="apaTagDocument"
+                                placeholder="Entrez les TAGs du document | example : TAG1,TAG2...">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="apaDescriptionDocument">Date publication</label>
+                            <div class="input-group-prepend">
+                              <div class="input-group-text"><i class="fa fa-tag"></i></div>
+                              <input type="text" name="datepublication" [(ngModel)]="date_publication" class="form-control" id="Date publication"
+                                placeholder="Entrez la date de publication de ce document ex :02-07-2010.">
+                            </div>
+                          </div>
+                      </form>
+                      <div *ngIf="addAlertisVisibleError" class="col-11 alert alert-danger"
+                        style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+                        Désolé, une erreur s'est produite !
+                      </div>
+                      <div *ngIf="addAlertisVisibleSuccess" class="col-11 alert alert-success"
+                        style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+                        Votre document a été ajouté avec succés, merci
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                      <button type="button" class="btn btnSerch" (click)="indexer(doc.id,doc.nameDocument)" ><i class="fa fa-plus-circle"></i><b>Indéxer</b></button>
+                    </div>
+                  </div>
+                </div>
+                </div> 
+              </ng-container>
+              <ng-template #elseTemplate>
+                
+              </ng-template> 
+      </div>
+      </div>
+    </div>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="container">
+    <div class="modal modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog1  " >
+       <div class="modal-content modal-content1 ">
+         <div class="modal-header modal-header1">
+
+           <!--<div class="container">
+               <div class="row">
+                  <div class="col-lg-10">
+                     <h5 class="modal-title " id="exampleModalCenterTitle">Titre Document</h5>
+                     
+                 </div>
+            <div class="col-lg-1">
+                     <button ><img  src="../../../../../assets//cloud-storage-download.png" alt=""></button>
+                 </div>-->
+                 
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+              
+             <!--  </div>
+           </div>-->
+           
+         </div>
+         <div class="modal-body modal-body1">
+             
+             <ngx-extended-pdf-viewer  [src]="ImageLien2" useBrowserLocale = " true " height = " 90vh "
+
+              [showPrintButton]="false" [showBookmarkButton]="false"
+              [showOpenFileButton]="false" 
+              
+               [showDownloadButton]="true"
+               [showSidebarButton]="true" 
+                delayFirstView="2000"  > </ngx-extended-pdf-viewer>  
+             <!--<img class="IMGclass" src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">-->
+           
+         </div>
+       
+     </div>
+   </div>
+ </div>
+</div>
+<div class="modal fade" id="ajouteIndex" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau document :</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="apaNomDocument">Nom Document</label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+            <input type="text" name="NomIndexDocument" [(ngModel)]="NomIndexDocument" class="form-control" id="NomIndexDocument" placeholder="Entrez le nom du document">
+          </div>
+        </div>  
+      </form>
+    </div>
+    <div class="modal-footer">
+  
+      <button type="button" class="btn btnSerch" (click)="createindex(NomIndexDocument)" ><i class="fa fa-plus-circle"></i><b> Ajouter Document Non Indexéer</b></button>
+    </div>
+  </div>
+</div>
+</div>

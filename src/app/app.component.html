@@ -15,7 +15,7 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="#"><img src={{path2}} class=" border-success"/></a>
                 </li>
-                <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+                <ng-container *ngIf="valide=='1' && role=='utilisateur' || role=='admin' || role=='editeur' ; else elseTemplate">
                    <li class="nav-item">
                         <a class="nav-link" routerLink="/" (click)="logout()" ><span> Déonnecté(e) </span>  </a>
                    </li>  
@@ -54,25 +54,31 @@
       <li class="nav-item">
         <a class="nav-link nav-link1" routerLink="/RG">ANNUIARE </a>
       </li>
-      <li class="nav-item dropdown " >
-            <a class="nav-link nav-link1 dropdown-toggle" routerLink="/Ressource" id="navbarDropdownMenuLink" role="button" data-hover="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             RESSOURCE
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+      <li class="nav-item" >
+            <a class="nav-link nav-link1" routerLink="/Ressource">RESSOURCES</a>
       </li>
-      <div *ngIf="role=='utilisateur'">
+      <div *ngIf="valide=='1' && role=='admin'">
+        <li class="nav-item">
+            <a class="nav-link nav-link1" routerLink="/dashborardAdmin">GESTION DES COMPTE </a>
+         </li>
+     </div>
+      <div *ngIf="valide=='1' && role=='utilisateur'">
           <li class="nav-item">
               <a class="nav-link nav-link1" routerLink="/Permis">DEMANDE</a>
            </li>
       </div>
+      <div *ngIf="valide=='1' && role=='editeur'">
+          <li class="nav-item">
+              <a class="nav-link nav-link1" routerLink="/RepoGed">GED PROCESSUS</a>
+           </li>
+      </div>
+      
+      
     </ul>
   </div>
 </nav>
 
 
+<!--<app-admin-dash></app-admin-dash>-->
 <router-outlet></router-outlet>
 <app-footer></app-footer>

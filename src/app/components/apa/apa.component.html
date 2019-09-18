@@ -1,40 +1,280 @@
-<div class="container_fluid">
-    <div class="container containerNav">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border shadow p-3 mb-5 bg-white rounded ">
-        
-          <div class="form-group SelectType ">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Type</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+<ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+
+  <div class="container_fluid">
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2" style="margin-top: 8%">
+            <div class="form-group ">
+                <label>AFFICHER :</label>
+                <select id="inputState3" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')"
+                  class="form-controlSelection form-control">
+                  <option value="1">
+                      <p class="Pselection">1 Document</p>
+                  </option>
+                  <option value="2">
+                    <p class="Pselection">2 Documents</p>
+                  </option>
+                  <option value="3" selected>
+                    <p class="Pselection">3 Documents</p>
+                  </option>
+                  <option value="4">
+                    <p class="Pselection">4 Documents</p>
+                  </option>
+                  <option value="5">
+                    <p class="Pselection">5 Documents</p>
+                  </option>
+                  <option value="10">
+                      <p class="Pselection">10 Documents</p>
+                  </option>
+                </select>
+            </div>
+            <hr>
+            <!-- Card Start -->
+            <div class="form-group ">
+              <label>TYPE :</label>
+              <select id="inputState" [(ngModel)]="Type" (ngModelChange)="Select('Type')"
+                class="form-controlSelection form-control">
+                  <option value="aucun" selected>AUCUN</option>
+                  <option  *ngFor="let ap of SaveDocument" [value]="ap.typeAPA">{{ap.typeAPA}}</option>
+              </select>
+            </div>
+
+            <div class="form-group ">
+              <label>CATEGORIE :</label>
+              <select id="inputState2" [(ngModel)]="Categorie" (ngModelChange)="Select('Categorie')"
+                class="form-controlSelection form-control">
+                <option value="aucun" selected>AUCUN</option>
+                  <option  *ngFor="let ap of SaveDocument" [value]="ap.categorieAPA">{{ap.categorieAPA}}</option>
+              </select>
+            </div>             
+
+            <button type="button" (click)="Filter()" class="btn btnSerch" style="width: 100%"><i
+            class="fa fa-filter"></i><B> FILTRER</B></button>              
+              
+        </div>
+        <div class="col-10 ">
+          <form class="form-inline" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <input class="form-control form-control-modified" name="inputRech" required ngModel type="Text" placeholder="Recherche par Tag"
+              aria-label="Search">
+            <button type="submit" class="btn btnSerch" style="margin-left: 1%" data-toggle="tooltip"
+              data-placement="bottom" title="Ajouter un nouveau document"><i class="fa fa-search"></i><b>
+                RECHERCHE</b></button>
+          </form>
+          <div class="container">
+            <div class="row col-12 align-items-center justify-content-center">
+              <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouterDocumentModal"
+                data-placement="bottom" title="Ajouter un nouveau document"><i class="fa fa-plus-circle"></i><b> AJOUTER
+                  UN NOUVEAU DOCUMENT</b></button>
+
+              <div class="form-group nbresult" style="margin-top: 14px;font-size: 18px;float: right;">
+                <span class="font-weight-bold"> NOMBRE DE DOCUMENTS : </span>
+                <span class="font-weight-bold" id="nbRegle">{{nbDocument}}</span>
+              </div>
+            </div>
+            <hr>
           </div>
-          <div class="form-group SelectType2 ">
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Catégorie</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+          <div *ngIf="isVisible" class="col-11 alert alert-danger"
+            style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+            Désolé, aucun résultat trouvé !
           </div>
-          <div class="form-group nbresult">
-            <span class="font-weight-bold"> Nb Doc: 8  </span>
-          </div> 
-      </nav>
-    </div>
-    
-        <div class="container">
-          <div class="row">
-            
-              <div class="col-12 col-sm-4  col-md-6 col-lg-12 col" *ngFor="let ap of  apa"  >
-                <app-apa-card [apa]=ap></app-apa-card>
-               </div>
+          <div class="col-12" *ngFor="let ap of apa | paginate: { itemsPerPage: Nbresult , currentPage: p }">
+            <app-apa-card [apa]=ap></app-apa-card>
+            <hr>
+          </div>
+          <div style="text-align:center">.
+            <pagination-controls  (pageChange)="p = $event"
+                                  directionLinks="true"
+                                  maxSize="2"
+                                  responsive="true"
+                                  previousLabel="Précédent"
+                                  nextLabel="Suivant"
+                                  ></pagination-controls>
             </div>
         </div>
-   
-  
+      </div>
+    </div>
+
   </div>
-  
+  <div class="modal fade" id="ajouterDocumentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau document :</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="apaNomDocument">Nom</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                <input type="text" name="apaNomDocument" [(ngModel)]="apaNomDocument" class="form-control" id="apaNomDocument" placeholder="Entrez le nom du document">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apaDescriptionDocument">Description</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-file-text-o"></i></div>
+                <textarea type="text" name="apaDescriptionDocument" [(ngModel)]="apaDescriptionDocument" class="form-control" id="apaDescriptionDocument"
+                  placeholder="Entrez la description du document"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apaDescriptionDocument">Type</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                <input type="text" name="apaTypeDocument" [(ngModel)]="apaTypeDocument" class="form-control" id="apaTypeDocument"
+                  placeholder="Entrez le type du document">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apaDescriptionDocument">Catégorie</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-dot-circle-o"></i></div>
+                <input type="text" name="apaCategorieDocument" [(ngModel)]="apaCategorieDocument" class="form-control" id="apaCategorieDocument"
+                  placeholder="Entrez la catégorie du document">
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="apaDescriptionDocument">Tag</label>
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-tag"></i></div>
+                  <input type="text" name="apaTagDocument" [(ngModel)]="apaTagDocument" class="form-control" id="apaTagDocument"
+                    placeholder="Entrez les TAGs du document | example : TAG1,TAG2...">
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="apaPieceDocument">Télécharger votre document en PDF</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-file-pdf-o"></i></div>
+                <input type="file" class="form-control-file" id="apaPieceDocument">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apaImageDocument">Télécharger votre IMAGE</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-picture-o"></i></div>
+                <input type="file" class="form-control-file" id="apaImageDocument">
+              </div>
+            </div>
+          </form>
+          <div *ngIf="addAlertisVisibleError" class="col-11 alert alert-danger"
+            style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+            Désolé, une erreur s'est produite !
+          </div>
+          <div *ngIf="addAlertisVisibleSuccess" class="col-11 alert alert-success"
+            style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+            Votre document a été ajouté avec succés, merci
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btnSerch" (click)="addApa()" ><i class="fa fa-plus-circle"></i><b> Ajouter</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container_fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-2 cardstyle">
+          <br><br><br><br>
+          <div class="form-group">
+            <select id="inputState " [(ngModel)]="Type" (ngModelChange)="Select('type')"
+              class="form-controlSelection form-control">
+              <option value="all">
+                <p class="Pselection">Type</p>
+              </option>
+              <option value="Loi">
+                <p class="Pselection">Loi</p>
+              </option>
+              <option value="type2">
+                <p class="Pselection">type2</p>
+              </option>
+              <option value="type3">
+                <p class="Pselection">type3</p>
+              </option>
+              <option value="type4">
+                <p class="Pselection">type4</p>
+              </option>
+              <option>Tesla</option>
+            </select>
+          </div>
+
+          <div class="form-group ">
+            <select id="inputState" [(ngModel)]="Categorie" class="Pselection" (ngModelChange)="Select('categorie')"
+              class="form-controlSelection form-control">
+              <option value="all">
+                <p>Catégorie</p>
+              </option>
+              <option value="CAT1">
+                <p class="Pselection">categorie1</p>
+              </option>
+              <option value="CAT2">
+                <p class="Pselection">categorie2</p>
+              </option>
+              <option value="CAT3">
+                <p class="Pselection">categorie3</p>
+              </option>
+              <option value="CAT4">
+                <p class="Pselection">categorie4</p>
+              </option>
+            </select>
+          </div>
+
+
+
+          <div class="form-group ">
+            <select id="inputState" [(ngModel)]="Nbresult" (ngModelChange)="Select('Nbresult')"
+              class="form-controlSelection form-control">
+              <option value="all">
+                <p class="Pselection">Afficher</p>
+              </option>
+              <option value="2">
+                <p class="Pselection">2 Documents</p>
+              </option>
+              <option value="4">
+                <p class="Pselection">4 Documents</p>
+              </option>
+              <option value="8">
+                <p class="Pselection">8 Documents</p>
+              </option>
+              <option value="10">
+                <p class="Pselection">10 Documents</p>
+              </option>
+            </select>
+          </div>
+
+          <button type="button" (click)="Filter()" class="btn btnSerch" style="width: 100%"><i
+              class="fa fa-filter"></i><B> FILTRER</B></button>
+
+        </div>
+        <div class="col-10 cardstyle">
+          <br>
+          <form class="form-inline" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <input class="form-control" name="inputRech" required ngModel type="Text" placeholder="Recherche par Tag"
+              aria-label="Search">
+            <button type="submit" class="btn btnSerch" style="margin-left: 1%" data-toggle="tooltip"
+              data-placement="bottom" title="Ajouter une nouvelle règle"><i class="fa fa-search"></i><b>
+                RECHERCHE</b></button>
+          </form>
+          <br>
+          <div *ngIf="isVisible" class="col-11 alert alert-danger"
+            style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+            Désolé, aucun résultat trouvé !
+          </div>
+          <div class="col-12 col-sm-4  col-md-6 col-lg-12 col" *ngFor="let ap of  apa">
+            <app-apa-card [apa]=ap></app-apa-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

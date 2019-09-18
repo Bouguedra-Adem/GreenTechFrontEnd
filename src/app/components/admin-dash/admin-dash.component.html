@@ -1,0 +1,54 @@
+
+<br><br><br>
+<div class="container">
+     <ng-container *ngIf="users; else elseTemplate">
+<table datatable class="row-border hover">
+  
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Nss</th>
+        <th>Email</th>
+        <th>Organisme</th>
+        <th>numTelf</th>
+        <th>Role</th>
+        <th>Etat de compte</th>
+        <th>Supprimer</th>
+    
+      </tr>
+    </thead>
+    <tbody  *ngFor="let user of users ">
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.nom}}</td>
+        <td>{{user.prenom}}</td>
+        <td>{{user.nss}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.organisme}}</td>
+        <td>{{user.numTelf}}</td>
+        
+        <ng-container *ngIf="user.role=='admin'; else elseTemplate">
+          <td>{{user.role}}</td>          
+        </ng-container>
+        <ng-template #elseTemplate>
+          <select id="inputState "   [(ngModel)]="user.role" (ngModelChange)="SetRole(user.id,user.role)" class="form-controlSelection form-control">
+            <option value="editeur"><p>editeur</p></option>
+            <option value="utilisateur"><p class="Pselection">utilisateur</p></option>
+          
+        </select>
+        </ng-template>
+        
+        <td><input type="checkbox" [checked]="user.valide" data-md-icheck (change)="ValideAccount($event,user.id)" > valide/non valide </td>
+        <td><button type="button"   (click)="delete(user.id)" class="btn btn-danger"> <img src="./../../../assets/delete.png" alt="">  </button></td>
+      </tr>
+    </tbody>
+
+  </table>
+</ng-container>
+<ng-template #elseTemplate>
+  
+</ng-template>
+</div>
+<br><br><br>
