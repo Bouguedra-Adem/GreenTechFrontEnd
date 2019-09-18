@@ -41,16 +41,9 @@ export class RepoGedComponent implements OnInit {
   indexer(id:any,lienAssetes:String){
     this.addAlertisVisibleSuccess=false
     this.addAlertisVisibleError=false
-    this.bref_Description=""
-    this.categorie=""
-    this.lienAssetes=""
-    this.nameDocument=""
-    this.tag=""
-    this.type=""
-    this.ImageLien=""
-    this.dateMsj=""
-    console.log(id+this.nameDocument)
-    if (this.categorie!="" && this.dateMsj!="" && this.date_publication!="" && this.tag!="" && this.type!=""){
+ 
+    console.log(id+"dddddddddd"+this.nameDocument+this.categorie+this.tag+this.tag)
+    if (this.categorie!="" && this.date_publication!="" && this.tag!="" && this.type!=""){
          this.doc.bref_Description=this.bref_Description
          this.doc.categorie=this.categorie
          this.doc.dateMsj=this.dateMsj
@@ -61,7 +54,7 @@ export class RepoGedComponent implements OnInit {
          this.gedServie.setIndex(id,this.doc)
          this.doc=new Doc()
 
-         this.addAlertisVisibleSuccess=true
+         //this.addAlertisVisibleSuccess=true
          
     }
     else{

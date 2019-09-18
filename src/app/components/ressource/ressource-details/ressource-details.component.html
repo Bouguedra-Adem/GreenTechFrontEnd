@@ -24,7 +24,7 @@
               data-toggle="modal" [attr.data-target]="'#DetailRessourceDocument'+ ressource.id"><b>VOIR PLUS </b> <i
                 class="fa fa-plus"></i></button>
               <ng-container *ngIf="ressource.ressource_occcupe=='0'; else elseTemplate">
-                  <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+                  <button type="button" (click)="savedemande()" class="btn btnSerch" 
                   data-toggle="tooltip" data-placement="bottom" title="Demande la ressource"
                   data-toggle="modal" [attr.data-target]="'#DemandeRessource'+ ressource.id"><b>Demande Ressource</b> <i
                   class="fa fa-plus"></i></button>
@@ -231,17 +231,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Demade de ressource {{ressource.ressource_name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p>Votre est envoyé avec succée on va vous repondre dès que possible</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermere</button>
+       
       </div>
     </div>
   </div>

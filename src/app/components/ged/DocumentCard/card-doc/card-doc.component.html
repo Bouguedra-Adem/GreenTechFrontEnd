@@ -30,14 +30,16 @@
                               
                           </ng-container>
                           <ng-template #elseTemplate>
-                               <ng-container *ngIf="role=='admin'; else elseTemplate4">
-                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
-                               </ng-container>
-                               <ng-template #elseTemplate4>
+                               <ng-container *ngIf="role=='editeur' ; else elseTemplate4">
                                   <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
                                   data-placement="bottom" title="Supprimer de document" data-toggle="modal"
                                   [attr.data-target]="'#deleteModal'+doc.id"><i class="fa fa-times"></i></button>
                                   <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                  
+                               </ng-container>
+                               <ng-template #elseTemplate4>
+                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                  
                                </ng-template>
                                
                              

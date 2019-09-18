@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { User } from '../ModelClasse/user/user';
 import { Doc } from '../ModelClasse/Lot1_5/doc';
 import { resolve } from 'url';
+import { Demand } from '../ModelClasse/Lot1_5/demand';
+
+
 
 
 @Injectable({
@@ -155,6 +158,15 @@ export class AuthentificationService {
         console.log('The POST observable is now completed.');
        
       });
+  }
+  saveDamande(demande :Demand,id:any){
+    const url = this.AuthUrl+`/User/Demande/${id}`
+    return this.http.put(url, demande,this.httpOptions).subscribe(res => {     
+      console.log(res);
+    }, err => {               
+      console.log(err);
+    });
+
   }
    
 }
