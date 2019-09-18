@@ -215,20 +215,15 @@
                 <label>TYPE :</label>
                 <select id="inputState" [(ngModel)]="Type" (ngModelChange)="Select('Type')"
                   class="form-controlSelection form-control">
-                  <option value="aucun" selected>AUCUN</option>
-                  <option *ngFor="let ap of ressource" [value]="ressources.typeressource">{{ressources.typeressource}}</option>
+                  <option value="tous">tous</option>
+                  <option value="forestieres">forestieres</option>
+                  <option value="alimentation et agriculture"><p class="Pselection">alimentation et agriculture</p></option>
+                  <option value="marines"><p class="Pselection">marines</p></option>
+                  <option value="microorganismes"><p class="Pselection">microorganismes</p></option>
+                  
                 </select>
               </div>
-    
-              <div class="form-group ">
-                <label>CATEGORIE :</label>
-                <select id="inputState2" [(ngModel)]="Categorie" (ngModelChange)="Select('Categorie')"
-                  class="form-controlSelection form-control">
-                  <option value="aucun" selected>AUCUN</option>
-                  <option *ngFor="let ap of ressource" [value]="ressources.categorieressource">{{ressources.categorieressource}}</option>
-                </select>
-              </div>
-    
+
               <button type="button" (click)="Filter()" class="btn btnSerch" style="width: 100%"><i
                   class="fa fa-filter"></i><B> FILTRER</B></button>
     

@@ -10,6 +10,7 @@ export class User {
     numTelf: String;
     pass: String;
     role: String;
+    valide:any;
     demandeRess: any[];
     doc: Doc[];
 

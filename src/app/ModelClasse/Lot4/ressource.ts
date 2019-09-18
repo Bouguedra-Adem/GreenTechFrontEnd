@@ -1,11 +1,9 @@
 export class Ressource {
     id: any;
-    nameRESSOURCE: String;
-    descriptionRESSOURCE: String;
-    typeRESSOURCE: String;
-    categorieRESSOURCE: String;
-    tagRESSOURCE: String;
-    datePublicationRESSOURCE: String;
-    dateMaj: String;
-    idEditeur: any;
+    ressource_name: String;
+    ressource_description: String;
+    ressource_type: String;
+    ressource_image: String;
+    ressource_occcupe:any;
+    
 }

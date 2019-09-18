@@ -20,9 +20,9 @@ export class GedComponent implements OnInit {
   private dcFilter:Doc[];
   private SaveDocument:Doc[];
   private inputRech :String="adddd";
-  private Type:String="all";
-  private Categorie:String="all";
-  private Nbresult:String="all";
+  private Type:String="Tous";
+  private Categorie:String="Tous";
+  private Nbresult:String="Tous";
   private role :String=""
    img:String="../../assets/joradp.jpg"
 
@@ -49,6 +49,7 @@ export class GedComponent implements OnInit {
       this.dc=this.ged.document
      
       this.SaveDocument=this.ged.document
+      console.log(this.dc)
     })
     
     }
@@ -60,7 +61,7 @@ export class GedComponent implements OnInit {
     if (this.inputRech!=""){
       this.ged.document.forEach(element => {
                
-        if (element.tag.split(",").includes(this.inputRech.toString().toLocaleUpperCase() )||element.tag.split(",").includes(this.inputRech.toString().toLocaleLowerCase())){
+        if (element.tag.split(",").includes(this.inputRech.toString().toLocaleUpperCase() )||element.tag.split(",").includes(this.inputRech.toString().toLowerCase())){
           console.log(  element.tag)
           this.dc.push(element)
           }
@@ -79,49 +80,34 @@ export class GedComponent implements OnInit {
      console.log(nameSelect)
      if (nameSelect=="type"){
        switch (this.Type){
-        case 'all' :{
-          this.Type="all"
+        case 'Tous' :{
+          this.Type="Tous"
           break;
         }
-         case 'Loi' :{
-           this.Type="Loi"
+         case 'Pdf' :{
+           this.Type="Pdf"
            break;
          }
-         case 'type2' :{
-          this.Type="type2"
+         case 'Png' :{
+          this.Type="Png"
           break;
         }
-        case 'type3' :{
-          this.Type="type3"
-          break;
-        }
-        case 'type3' :{
-          this.Type="type3"
-          break;
-        }
+       
 
        }
      }
      if (nameSelect=="categorie"){
        switch (this.Categorie){
-         case 'all':{
-           this.Categorie="all";
+         case 'Tous':{
+           this.Categorie="Tous";
            break;
          }
-         case 'categorie1':{
-          this.Categorie="categorie1";
+         case 'Loi':{
+          this.Categorie="Loi";
           break;
         }
-        case 'categorie2':{
-          this.Categorie="categorie2";
-          break;
-        }
-        case 'categorie3':{
-          this.Categorie="categorie3";
-          break;
-        }
-        case 'categorie4':{
-          this.Categorie="categorie4";
+        case 'Protocol':{
+          this.Categorie="Protocol";
           break;
         }
        }
@@ -157,25 +143,25 @@ export class GedComponent implements OnInit {
      var j=0;
      this.dc=this.SaveDocument;
      this.dcFilter=[]
-     if (this.Categorie !="all" ||this.Type!="all"){
+     if (this.Categorie !="Tous" ||this.Type!="Tous"){
         for (i;i<this.dc.length;i++){
-         
-          if (this.dc[i].type==this.Type && this.dc[i].categorie==this.Categorie ){
-              console.log(this.dc[i].type+""+this.Type +this.dc[i].id)
-              console.log(this.dc[i]) 
+            console.log("i'm i="+i)
+          if (this.dc[i].type.toLowerCase()==this.Type.toLowerCase() && this.dc[i].categorie.toLowerCase()==this.Categorie.toLowerCase() ){
+             console.log('hereee1')
+             console.log(this.dc[i].type+" "+this.Type.toLowerCase)
               this.dcFilter[j]=this.dc[i];
               j++;
             
           }
-          if(this.dc[i].categorie==this.Categorie && this.Type=="all"){
-            console.log(this.dc[i].categorie+""+this.Categorie)
-            console.log(this.dc[i]) 
+          if(this.dc[i].categorie.toLowerCase()==this.Categorie.toLowerCase() && this.Type.toLowerCase()=="Tous".toLowerCase()){
+            console.log('hereee2')
+
             this.dcFilter[j]=this.dc[i];
             j++;
           }
-          if(this.dc[i].type==this.Type && this.Categorie=="all"){
-            console.log(this.dc[i].categorie+""+this.Categorie)
-            console.log(this.dc[i]) 
+          if(this.dc[i].type.toLowerCase()==this.Type.toLowerCase() && this.Categorie.toLowerCase()=="Tous".toLowerCase()){
+            console.log('hereee3')
+            
             this.dcFilter[j]=this.dc[i];
             j++;
           }   

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthentificationService } from './Services/authentification.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
   public path3 = 'assets/google-plus.png';
   public path4 = 'assets/Background.jpg';
   public role: String;
+  public valide: String;
   constructor(private auth: AuthentificationService, private router: Router) {
 
 
@@ -24,6 +26,9 @@ export class AppComponent {
 
     if (this.auth.getCurrentUser() != null) {
       this.role = this.auth.getCurrentUser().role;
+      this.valide=this.auth.getCurrentUser().valide;
+      console.log(this.valide);
+
     }
 
   }

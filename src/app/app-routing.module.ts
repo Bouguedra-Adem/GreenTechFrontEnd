@@ -9,6 +9,8 @@ import { CreatioCompteComponent } from './components/GestionDeCompte/Creation de
 import { SeConnecteComponent } from './components/GestionDeCompte/Se connecté/se-connecte/se-connecte.component';
 import { DemandePermisComponent } from './components/demande-permis/demande-permis.component';
 import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
+import {AdminDashComponent} from './components/admin-dash/admin-dash.component'
+import {RepoGedComponent} from './components/repo-ged/repo-ged.component'
 
 
 
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path:'CreationCompte',component:CreatioCompteComponent},
   { path:'Seconnecte',component:SeConnecteComponent},
   { path:'Permis',component:DemandePermisComponent},
-  { path:'institut',component:AnnuairePagesComponent}
+  { path:'institut',component:AnnuairePagesComponent},
+  { path:'dashborardAdmin',component:AdminDashComponent},
+  { path:'RepoGed',component:RepoGedComponent},
 
 
 ];

@@ -40,3 +40,6 @@ a {
     -webkit-text-decoration-skip: objects;
 
 }
+.list-group-item-success {
+    color: #a4d470;
+    background-color: #a4d47070;;}

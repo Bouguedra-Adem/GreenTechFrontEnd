@@ -25,7 +25,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { RessourceDetailsComponent } from './components/ressource/ressource-details/ressource-details.component';
 import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
-
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
+import { DataTablesModule } from 'angular-datatables';
+import { RepoGedComponent } from './components/repo-ged/repo-ged.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +44,10 @@ import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annu
     SeConnecteComponent,
     RessourceDetailsComponent,
     AnnuairePagesComponent,
+    AdminDashComponent,
+    RepoGedComponent,
+  
+  
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annu
     HttpClientModule,
     FormsModule,
     NgxExtendedPdfViewerModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    DataTablesModule
   ],
   providers: [AnnuaireService, ApaService, GedService, DemandePermisService , RessourceService
   , AuthentificationService],

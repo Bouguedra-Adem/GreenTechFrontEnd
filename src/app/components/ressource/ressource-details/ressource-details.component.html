@@ -6,8 +6,8 @@
 
         <div class="col-lg-7 ">
           <div class="card-block ">
-            <h4 class="card-title" style="text-transform: uppercase">{{ressource.nameRESSOURCE}}</h4>
-            <p>{{ressource.descriptionRESSOURCE.slice(0, 160)}} ...</p>
+            <h4 class="card-title" style="text-transform: uppercase">{{ressource.ressource_name}}</h4>
+            <p>{{ressource.ressource_description.slice(0, 160)}} ...</p>
             <br><br><hr>
             <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
               data-toggle="tooltip" data-placement="bottom" title="Voir plus d'informations sur ce document"
@@ -32,10 +32,10 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block" src="https://picsum.photos/450/300?image=1072" alt="">
+                <img class="d-block" src="https://picsum.photos/450/300?image=355" alt="">
               </div>
               <div class="carousel-item">
-                <img class="d-block" src="https://picsum.photos/450/300?image=855" alt="">
+                <img class="d-block" src="https://picsum.photos/450/300?image=355" alt="">
               </div>
               <div class="carousel-item">
                 <img class="d-block" src="https://picsum.photos/450/300?image=355" alt="">
@@ -65,13 +65,13 @@
         <div class="modal-content ">
           <div class="modal-header">
             <h3 class="modal-title" attr.id="exampleModalCenterTitle{{ressource.id}}" style="text-transform: uppercase">
-              {{ressource.nameRESSOURCE}}</h3>
+              {{ressource.ressource_name}}</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p style="text-align: justify">{{ressource.descriptionRESSOURCE}}</p>
+            <p style="text-align: justify">{{ressource.ressource_description}}</p>
             <ngx-extended-pdf-viewer src="../../../../assets/loi.pdf" useBrowserLocale=" true " height=" 90vh "
               [showPrintButton]="false" [showBookmarkButton]="false" [showOpenFileButton]="false"
               [showDownloadButton]="true" [showSidebarButton]="true" delayFirstView="2000">
@@ -87,7 +87,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" attr.id="modificationModalLabel{{ressource.id}}">Modification de la ressource :
-              {{ressource.nameRESSOURCE}}</h5>
+              {{ressource.ressource_name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -163,7 +163,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" attr.id="deleteModalLabel{{ressource.id}}">Suppression de la ressource :
-              {{ressource.nameRESSOURCE}}</h5>
+              {{ressource.ressource_name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

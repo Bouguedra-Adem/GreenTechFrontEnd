@@ -11,7 +11,7 @@
                       <div class="card-block px-6">
                         <h4 class="card-title">{{doc.nameDocument}}</h4>
                         <p class="card-text">
-                             Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. 
+                      
                              {{doc.bref_Description}}
                         </p>
                         <br>
@@ -20,7 +20,7 @@
                                   <div class="container">
                                       <div class="row">
                                         <div class="col-lg-8">
-                                           <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                                           <a href="#" class="mt-auto btn btn-outline-success " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
                                         </div>
                                         <div class="col-lg-4">
                                             <button type="button" (click)="AddFavorier(doc.id)" class=" mt-auto   btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter à Votre Ged favories"><img src="../../../../../assets/trash.png" alt=""></button>
@@ -30,7 +30,17 @@
                               
                           </ng-container>
                           <ng-template #elseTemplate>
-                              <a href="#" class="mt-auto btn btn-outline-success  "data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               <ng-container *ngIf="role=='admin'; else elseTemplate4">
+                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               </ng-container>
+                               <ng-template #elseTemplate4>
+                                  <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
+                                  data-placement="bottom" title="Supprimer de document" data-toggle="modal"
+                                  [attr.data-target]="'#deleteModal'+doc.id"><i class="fa fa-times"></i></button>
+                                  <a href="#" class="mt-auto btn btn-outline-success  " (click)="Addlien(doc.lienAssetes)" data-toggle="modal" data-target="#exampleModalCenter">Voir Plus</a>
+                               </ng-template>
+                               
+                             
                           </ng-template>  
                       </div>
                     </div>
@@ -45,10 +55,11 @@
             
   
            <div class="container">
-           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog  " >
-              <div class="modal-content ">
-                <div class="modal-header">
+           <div class="modal modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog1 " >
+              <div class="modal-content modal-content1">
+                <div class="modal-header modal-header1">
+   
                   <!--<div class="container">
                       <div class="row">
                          <div class="col-lg-10">
@@ -67,8 +78,10 @@
                   </div>-->
                   
                 </div>
-                <div class="modal-body">
-                    <ngx-extended-pdf-viewer  src="../../../../../assets/loi.pdf" useBrowserLocale = " true " height = " 90vh "
+                <div class="modal-body modal-body1">
+                    
+                    <ngx-extended-pdf-viewer  [src]="ImageLien" useBrowserLocale = " true " height = " 90vh "
+
                      [showPrintButton]="false" [showBookmarkButton]="false"
                      [showOpenFileButton]="false" 
                      
@@ -78,8 +91,36 @@
                     <!--<img class="IMGclass" src="../../../../../assets/apa.jpg" alt="" sizes="200px" srcset="">-->
                   
                 </div>
-                
+              
             </div>
           </div>
         </div>
- 
+ </div>
+ </div>
+ <div class="modal fade" attr.id="deleteModal{{doc.id}}" tabindex="-1" role="dialog"
+ attr.aria-labelledby="deleteModalLabel{{doc.id}}" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" attr.id="deleteModalLabel{{doc.id}}">Suppression du document :
+         {{doc.nameDocument}}</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <h6>Etes vous sur de vouloir supprimer ce document ?</h6>
+       <div *ngIf="deleteAlertisVisibleSuccess" class="col-11 alert alert-success"
+         style="text-align: center;margin-left: auto;margin-right: auto" role="alert">
+         Votre docuemnt a été supprimée avec succés, merci
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+         <button type="submit" (click)="deletedoc()" class="btn btn-danger"><i class="fa fa-times"></i>
+           Supprimer</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+</div>

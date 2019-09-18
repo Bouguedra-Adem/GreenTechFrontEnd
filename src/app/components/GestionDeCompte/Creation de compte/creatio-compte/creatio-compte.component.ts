@@ -3,6 +3,7 @@ import { User } from 'src/app/ModelClasse/user/user';
 import { AuthentificationService } from 'src/app/Services/authentification.service';
 import { registerLocaleData } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-creatio-compte',
@@ -19,12 +20,13 @@ export class CreatioCompteComponent implements OnInit {
     public pass:String;
     public confpass:String;
     public user :User=new User();
+    afficheModal:Boolean=false
     
   constructor(private auth:AuthentificationService,private router: Router) { }
 
   ngOnInit() {
   }
-  SignUp(){
+   SignUp(){
     
     if (this.nom==""){
       
@@ -67,10 +69,15 @@ export class CreatioCompteComponent implements OnInit {
     
      
        this.auth.Regester(this.user)
-       this.router.navigate(['/Seconnecte'])
+       this.afficheModal=true
+      
+      
      }
       
     
+    }
+    navigate (){
+      this.router.navigate(['/'])
     }
   
     

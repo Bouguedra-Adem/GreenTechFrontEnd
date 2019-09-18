@@ -15,23 +15,38 @@ export class RessourceService {
     })
   };
   constructor(private http: HttpClient) {
-    this.RessourcesUrl = 'http://localhost:8080/Ressources';
+    this.RessourcesUrl = 'http://localhost:8080';
   }
 
   getAllressources(): Observable<Ressource[]> {
-    return this.http.get<Ressource[]>('//localhost:8080/Ressources');
+    return this.http.get<Ressource[]>(this.RessourcesUrl+'/AllResource');
   }
 
   CreatRESSOURCE(ressource: Ressource) {
-    this.http.post<Ressource>('//localhost:8080/SaveRessource', ressource, this.httpOptions).subscribe(
+    this.http.post<Ressource>(this.RessourcesUrl+'/Ressource', ressource, this.httpOptions).subscribe(
       (val) => {console.log('Ressource ajouté avec succés', val); },
       response => {console.log('Une erreur s\'est produite !', response); },
       () => {console.log('The POST observable is now completed.'); });
   }
   DeleteRESSOURCE(id: number): Observable<any> {
-    return this.http.delete(`//localhost:8080/Ressource/${id}`, { responseType: 'text' });
+    return this.http.delete(this.RessourcesUrl+`/Ressource/${id}`, { responseType: 'text' });
   }
-  UpdateRESSOURCE(id: number, value: any): Observable<any> {
-    return this.http.put(`//localhost:8080/Ressource/${id}`, value);
+  setRessourceOcup(id: any, occupe: any){
+    let param: any = {'id':id,'occupe':occupe};
+    this.http.put(this.RessourcesUrl+'/Ressource/occupe',this.httpOptions,{params:param}).subscribe(
+      (val) => {
+        console.log('POST call successful value returned in body',
+          val);
+        
+      },
+      response => {
+        console.log('POST call in error', response);
+       
+      },
+      () => {
+        console.log('The POST observable is now completed.');
+       
+      });
   }
-}
+  }
+

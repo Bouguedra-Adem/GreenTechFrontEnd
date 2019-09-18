@@ -15,6 +15,7 @@ export class RessourceDetailsComponent implements OnInit {
   updateAlertisVisibleSuccess = false;
   updateAlertisVisibleError = false;
   deleteAlertisVisibleSuccess = false;
+  occupe=""
 
   @Input() ressource: Ressource;
   constructor(private ressourceService: RessourceService, private ressourceComponent: RessourceComponent) { }
@@ -22,6 +23,7 @@ export class RessourceDetailsComponent implements OnInit {
   ngOnInit() {
     this.updateAlertisVisibleSuccess = false;
     this.updateAlertisVisibleError = false;
+    console.log(this.ressource)
   }
   deleteRessource() {
     this.ressourceService.DeleteRESSOURCE(this.ressource.id)
@@ -32,23 +34,7 @@ export class RessourceDetailsComponent implements OnInit {
         error => console.log(error));
   }
   updateActive(isActive: boolean) {
-    this.ressourceService.UpdateRESSOURCE(this.ressource.id,
-      { nameRESSOURCE: this.ressource.nameRESSOURCE,
-        descriptionRESSOURCE: this.ressource.descriptionRESSOURCE,
-        typeRESSOURCE: this.ressource.typeRESSOURCE,
-        categorieRESSOURCE: this.ressource.categorieRESSOURCE,
-        tagRESSOURCE: this.ressource.tagRESSOURCE,
-        dateMaj: formatDate(new Date(), 'yyyy/MM/dd | HH:mm:ss', 'en').toString() })
-      .subscribe(
-        data => {
-          console.log(data);
-          this.ressource = data as Ressource;
-          this.updateAlertisVisibleSuccess = true;
-        },
-        error => {
-          console.log(error);
-          this.updateAlertisVisibleError = true;
-        });
+    this.ressourceService.setRessourceOcup(this.ressource.id ,this.occupe)
   }
 
 }
