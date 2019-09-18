@@ -25,6 +25,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { RessourceDetailsComponent } from './components/ressource/ressource-details/ressource-details.component';
 import { AnnuairePagesComponent } from './components/annuaire/annuairePages/annuairePages.component';
+import { aproposComponent } from './components/apropos/apropos.component';
 import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
 import { DataTablesModule } from 'angular-datatables';
 import { RepoGedComponent } from './components/repo-ged/repo-ged.component';
@@ -44,8 +45,10 @@ import { RepoGedComponent } from './components/repo-ged/repo-ged.component';
     SeConnecteComponent,
     RessourceDetailsComponent,
     AnnuairePagesComponent,
+    aproposComponent,
     AdminDashComponent,
     RepoGedComponent,
+
   
   
   ],
