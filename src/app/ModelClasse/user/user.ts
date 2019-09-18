@@ -1,4 +1,5 @@
 import { Doc } from '../Lot1_5/doc';
+import { Demand } from '../Lot1_5/demand';
 
 export class User {
     id: any;
@@ -11,7 +12,7 @@ export class User {
     pass: String;
     role: String;
     valide:any;
-    demandeRess: any[];
+    demandeRess:Demand[];
     doc: Doc[];
 
 
