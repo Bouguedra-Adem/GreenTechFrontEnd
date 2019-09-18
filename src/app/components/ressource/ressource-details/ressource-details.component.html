@@ -8,17 +8,57 @@
           <div class="card-block ">
             <h4 class="card-title" style="text-transform: uppercase">{{ressource.ressource_name}}</h4>
             <p>{{ressource.ressource_description.slice(0, 160)}} ...</p>
-            <br><br><hr>
-            <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+            <br>
+            <ng-container *ngIf="ressource.ressource_occcupe=='0'; else elseTemplateoccupe">
+              <h6>Etat de la Ressouce: Libre</h6>
+            </ng-container>
+            <ng-template #elseTemplateoccupe>
+                <h6>Etat de la Ressouce:Occupée </h6>
+            </ng-template>
+            <hr>
+            
+            <ng-container *ngIf="role=='utilisateur'; else elseTemplate">
+
+              <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
               data-toggle="tooltip" data-placement="bottom" title="Voir plus d'informations sur ce document"
               data-toggle="modal" [attr.data-target]="'#DetailRessourceDocument'+ ressource.id"><b>VOIR PLUS </b> <i
                 class="fa fa-plus"></i></button>
-            <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
-              data-placement="bottom" title="Supprimer cette ressource" data-toggle="modal"
-              [attr.data-target]="'#deleteModal'+ ressource.id"><i class="fa fa-times"></i></button>
-            <button type="button" class="btn btnSerch" style="margin-right: 5px" data-toggle="tooltip"
-              data-placement="bottom" title="Modifier cette ressource" data-toggle="modal"
-              [attr.data-target]="'#modificationModal'+ ressource.id"><i class="fa fa-pencil"></i></button>
+              <ng-container *ngIf="ressource.ressource_occcupe=='0'; else elseTemplate">
+                  <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+                  data-toggle="tooltip" data-placement="bottom" title="Demande la ressource"
+                  data-toggle="modal" [attr.data-target]="'#DemandeRessource'+ ressource.id"><b>Demande Ressource</b> <i
+                  class="fa fa-plus"></i></button>
+              </ng-container>
+              <ng-template #elseTemplate>
+                
+              </ng-template>
+              
+               
+            </ng-container>
+            <ng-template #elseTemplate>
+              <ng-container *ngIf="role=='editeur'; else elseTemplateA">
+                <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+                data-toggle="tooltip" data-placement="bottom" title="Voir plus d'informations sur ce document"
+                data-toggle="modal" [attr.data-target]="'#DetailRessourceDocument'+ ressource.id"><b>VOIR PLUS </b> <i
+                  class="fa fa-plus"></i></button>
+              <button type="button" class="btn btn-danger" style="margin-right: 5px" data-toggle="tooltip"
+                data-placement="bottom" title="Supprimer cette ressource" data-toggle="modal"
+                [attr.data-target]="'#deleteModal'+ ressource.id"><i class="fa fa-times"></i></button>
+              <button type="button" class="btn btnSerch" style="margin-right: 5px" data-toggle="tooltip"
+                data-placement="bottom" title="Modifier cette ressource" data-toggle="modal"
+                [attr.data-target]="'#modificationModal'+ ressource.id"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="btn btnSerch" title="Ocu"  style="margin-right: 5px"><i class="fa fa-times"></i></button>
+              </ng-container>
+              <ng-template #elseTemplateA>
+                <button type="button" class="btn btnSerch" routerLink="viewMoreInformation" routerLinkActive="active"
+                data-toggle="tooltip" data-placement="bottom" title="Voir plus d'informations sur ce document"
+                data-toggle="modal" [attr.data-target]="'#DetailRessourceDocument'+ ressource.id"><b>VOIR PLUS </b> <i
+                  class="fa fa-plus"></i></button>
+              </ng-template>
+              
+            </ng-template>
+            
+            
           </div>
         </div>
         <!-- Carousel start -->
@@ -183,6 +223,26 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</div>
+<!--  model demande-->
+<div class="modal" tabindex="-1" role="dialog" attr.id="DemandeRessource{{ressource.id}}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>

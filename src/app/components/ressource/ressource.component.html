@@ -64,9 +64,16 @@
           </form>
           <div class="container">
             <div class="row col-12 align-items-center justify-content-center">
-              <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouterRessourceModal"
-                data-placement="bottom" title="Ajouter une ressource"><i class="fa fa-plus-circle"></i><b> AJOUTER
-                  UNE NOUVELLE RESSOURCE</b></button>
+                <ng-container *ngIf="role=='editeur'; else elseTemplate">
+                    <button type="button" class="btn btnSerch" data-toggle="modal" data-target="#ajouterRessourceModal"
+                    data-placement="bottom" title="Ajouter une ressource"><i class="fa fa-plus-circle"></i><b> AJOUTER
+                      UNE NOUVELLE RESSOURCE</b></button>
+                  </ng-container>
+                  <ng-template #elseTemplate>
+                    
+                  </ng-template>  
+              
+
 
               <div class="form-group nbresult" style="margin-top: 14px;font-size: 18px;float: right;">
                 <span class="font-weight-bold"> NOMBRE DE RESSOURCES : </span>
