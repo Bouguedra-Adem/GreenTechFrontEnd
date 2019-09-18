@@ -4,6 +4,7 @@ import { RessourceComponent } from '../ressource.component';
 import { RessourceService } from '../../../Services/ressource.service';
 import { formatDate } from '@angular/common';
 import { Routes } from '@angular/router';
+import { AuthentificationService } from 'src/app/Services/authentification.service';
 
 
 @Component({
@@ -15,15 +16,21 @@ export class RessourceDetailsComponent implements OnInit {
   updateAlertisVisibleSuccess = false;
   updateAlertisVisibleError = false;
   deleteAlertisVisibleSuccess = false;
+  role:String
   occupe=""
 
   @Input() ressource: Ressource;
-  constructor(private ressourceService: RessourceService, private ressourceComponent: RessourceComponent) { }
+  constructor(private auth:AuthentificationService,private ressourceService: RessourceService, private ressourceComponent: RessourceComponent ) { }
 
   ngOnInit() {
     this.updateAlertisVisibleSuccess = false;
     this.updateAlertisVisibleError = false;
     console.log(this.ressource)
+    if (this.auth.getCurrentUser()!=null){
+      this.role=this.auth.getCurrentUser().role
+      //this.ImageLien="../../../../../assets/ged/index/"+this.doc.lienAssetes
+     
+    }  
   }
   deleteRessource() {
     this.ressourceService.DeleteRESSOURCE(this.ressource.id)
